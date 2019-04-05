@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.AdminView.AdminUserChangeInfoView;
+package MotionCBS.client.ui.admin.AdminUserChangeInfoView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;

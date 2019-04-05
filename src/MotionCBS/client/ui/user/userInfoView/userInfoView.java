@@ -14,4 +14,7 @@ public class userInfoView extends Composite {
     public userInfoView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
+
+    private void initWidget(Object andBindUi) {
+    }
 }

@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.AdminView.AdminMainView;
+package MotionCBS.client.ui.admin.AdminMainView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
