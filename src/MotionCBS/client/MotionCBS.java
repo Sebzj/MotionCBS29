@@ -1,5 +1,6 @@
 package MotionCBS.client;
 
+import MotionCBS.client.rpc.MotionCBSService;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
