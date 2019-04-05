@@ -1,6 +1,47 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <div>
+<ui:style>
+    <!-- lokal css til brug af vores titel -->
 
-    </div>
+    .title {
+
+    }
+
+</ui:style>
+
+    <g:HTMLPanel>
+
+        <g:DockLayoutPanel unit="EM" width="100%" height="100%">
+
+        <g:north size="5">
+            <g:HTMLPanel styleName="north">
+                <g:Label styleName="{style.title}" text="DØKBook"/>
+            </g:HTMLPanel>
+        </g:north>
+
+        <g:south size="3">
+            <g:HTMLPanel styleName="south">
+                <g:Label styleName="footer" text="CVR: 12345678"/>
+                <g:Label styleName="footer" text="Kontakt: info@motioncbs.dk"/>
+                <g:Label styleName="footer" text="Åbningstider: Alle ugens dage: 05:00-23:00"/>
+            </g:HTMLPanel>
+        </g:south>
+
+            <g:west size="10">
+                <g:FlowPanel styleName="menu">
+                    <g:Button styleName="btn menuBtn" text="Logout" ui:field="logoutBtn"/>
+                </g:FlowPanel>
+            </g:west>
+
+            <g:center>
+                <g:DeckLayoutPanel ui:field="centerPanel"/>
+            </g:center>
+
+        </g:DockLayoutPanel>
+
+    </g:HTMLPanel>
+
+
+
+
 </ui:UiBinder>

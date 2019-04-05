@@ -10,6 +10,35 @@ body, td, a, div, .p {
     font-family: arial, sans-serif
 }
 
+
+/* global css til vores buttons */
 .btn {
+
+}
+
+
+
+/* global css til vores header */
+.north {
+
+}
+
+/* global css til vores footer */
+.south {
+
+}
+
+/* global css til vores footer text */
+.footer {
+
+}
+
+/* global css til vores menu */
+.menu {
+
+}
+
+/* global css til vores menu button */
+.menuBtn {
 
 }
