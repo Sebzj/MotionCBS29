@@ -5,13 +5,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
-public class loginView extends Composite {
-    interface loginViewUiBinder extends UiBinder<HTMLPanel, loginView> {
+public class LoginView extends Composite {
+    interface loginViewUiBinder extends UiBinder<HTMLPanel, LoginView> {
     }
 
     private static loginViewUiBinder ourUiBinder = GWT.create(loginViewUiBinder.class);
 
-    public loginView() {
+    public LoginView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 }
