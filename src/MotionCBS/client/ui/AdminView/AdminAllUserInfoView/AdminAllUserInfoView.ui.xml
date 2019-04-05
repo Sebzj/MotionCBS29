@@ -15,7 +15,10 @@
 
         <g:north size="5">
             <g:HTMLPanel styleName="north">
-                <g:Label styleName="{style.title}" text="DØKBook"/>
+                <g:Label text="MotionCBS" styleName="{style.title}"/>
+
+                <!-- MANGLER UPLOAD AF BILLEDE LOGO HER -->
+
             </g:HTMLPanel>
         </g:north>
 
