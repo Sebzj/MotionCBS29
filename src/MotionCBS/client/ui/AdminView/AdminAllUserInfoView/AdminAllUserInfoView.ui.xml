@@ -1,12 +1,10 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+
 <ui:style>
     <!-- lokal css til brug af vores titel -->
-
     .title {
-
     }
-
 </ui:style>
 
     <g:HTMLPanel>
