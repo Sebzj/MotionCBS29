@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact name="MotionCBS29:GWT">
+    <output-path>$PROJECT_DIR$/out/artifacts/MotionCBS29_GWT</output-path>
+    <root id="root">
+      <element id="gwt-compiler-output" facet="MotionCBS29/gwt/GWT" />
+    </root>
+  </artifact>
+</component>
