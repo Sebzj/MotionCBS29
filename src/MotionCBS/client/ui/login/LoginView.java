@@ -24,4 +24,6 @@ public class LoginView extends Composite {
     public void addClickHandlers(ClickHandler clickHandler) {
         loginBtn.addClickHandler(clickHandler);
     }
+
+
 }
