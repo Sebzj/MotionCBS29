@@ -1,10 +1,11 @@
 package MotionCBS.client.ui;
 
-import MotionCBS.client.ui.AdminView.AdminMainView;
+import MotionCBS.client.ui.AdminView.AdminMainView.AdminMainView;
 import MotionCBS.client.ui.login.LoginView;
 import MotionCBS.client.ui.user.userMainView.UserMainView;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
 
 public class ContentPanel extends Composite {
 
@@ -39,7 +40,12 @@ public class ContentPanel extends Composite {
         initWidget(contentPanel);
     }
 
-    //getters for alle MainView
+    //opretter metode til at aendrer views
+    public void changeView(Widget panel) {
+        contentPanel.showWidget(panel);
+    }
+
+    //getters for alle MainView saa vi kan skifte view
 
     public LoginView getLoginView() {
         return loginView;

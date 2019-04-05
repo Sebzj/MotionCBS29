@@ -24,11 +24,14 @@ public class MotionCBS implements EntryPoint {
     public void onModuleLoad() {
 
 
-        //Instantiate the "screen" (panel)
+        //intantiere et objekt af ContentPanel som er det der skal vises paa skaermen
         ContentPanel content = new ContentPanel();
-        //adding the "screen" to the RootLayoutPanel
+
+        //tilfoejer alt indhold til RootLayoutPanel
         RootLayoutPanel.get().add(content);
-        //Instantiate the RPC service
+
+        //Instantiate the RPC service laver the magic call
+        MotionCBSServiceAsync rpcService = GWT.create(MotionCBSService.class);
 
         //Passes the "screen" and the RPC service to the MainController
         new MainController(content, rpcService);
