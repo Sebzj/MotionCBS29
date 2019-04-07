@@ -4,19 +4,46 @@
     <!-- i ui:style er der inline styling og refererer kun til dette ui.xml-->
 
     <ui:style>
-        .btn{
+        .btn {
+            width: 70px;
+        }
+
+        .htmlPanel {
+            background-color: antiquewhite;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .centerIndhold {
+            background-color: olive;
+            align-items: center;
+            height: 250px;
+            width: 25%;
+            padding: 10px;
 
         }
 
+        .overskrift {
+            align-content: center;
+            color: #1d44a5;
+            font-size: 35px;
+            font-weight: bold;
+        }
 
+        .usernameBox {
+            align-content: center;
+        }
 
 
     </ui:style>
-    <g:HTMLPanel>
+    <g:HTMLPanel styleName="{style.htmlPanel}">
 
-        <g:VerticalPanel spacing="5">
+        <g:VerticalPanel spacing="5" styleName="{style.centerIndhold}">
+            <g:Label styleName="{style.overskrift}">MotionCBS</g:Label>
             <g:Label>Username:</g:Label>
-            <g:TextBox ui:field="usernameBox"/>
+            <g:TextBox ui:field="usernameBox" styleName="{style.usernameBox}"/>
             <g:Label>Password:</g:Label>
             <g:PasswordTextBox ui:field="passwordBox"/>
             <g:Button text="Login" ui:field="loginBtn" styleName="{style.btn}"/>
