@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.AdminView.AdminStatsView;
+package MotionCBS.client.ui.admin.AdminStatsView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;

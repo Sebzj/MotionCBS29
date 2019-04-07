@@ -1,6 +1,6 @@
 package MotionCBS.client.ui;
 
-import MotionCBS.client.ui.AdminView.AdminMainView.AdminMainView;
+import MotionCBS.client.ui.admin.AdminMainView.AdminMainView;
 import MotionCBS.client.ui.login.LoginView;
 import MotionCBS.client.ui.user.userMainView.UserMainView;
 import com.google.gwt.user.client.ui.Composite;
