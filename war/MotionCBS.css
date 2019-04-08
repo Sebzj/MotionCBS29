@@ -14,6 +14,16 @@ body, td, a, div, .p {
 /* global css til vores buttons */
 .btn {
 
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-radius: 2px;
+    font-size: 18px;
+    background-color: #333;
+
+    cursor: hand;
+    color: #fff;
+
 }
 
 
@@ -25,20 +35,33 @@ body, td, a, div, .p {
 
 /* global css til vores footer */
 .south {
-
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: floralwhite;
 }
 
 /* global css til vores footer text */
 .footer {
+    margin-right: 20px;
+
 
 }
 
 /* global css til vores menu */
 .menu {
+    padding: 30px;
+    background-color: beige;
+
 
 }
 
 /* global css til vores menu button */
 .menuBtn {
+    font-size: 14px;
+    padding: 5px;
+    width: 100px;
+    margin-bottom: 10px;
+
 
 }

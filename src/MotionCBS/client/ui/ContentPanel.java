@@ -34,7 +34,7 @@ public class ContentPanel extends Composite {
         contentPanel.add(adminMainView);
 
         //The panel that is shown when the application starts
-        contentPanel.showWidget(loginView);
+        contentPanel.showWidget(userMainView);
 
         //Init the main widget in this class
         initWidget(contentPanel);

@@ -5,13 +5,13 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
-public class userInfoView extends Composite {
-    interface userInfoViewUiBinder extends UiBinder<HTMLPanel, userInfoView> {
+public class UserInfoView extends Composite {
+    interface userInfoViewUiBinder extends UiBinder<HTMLPanel, UserInfoView> {
     }
 
     private static userInfoViewUiBinder ourUiBinder = GWT.create(userInfoViewUiBinder.class);
 
-    public userInfoView() {
+    public UserInfoView() {
         initWidget(ourUiBinder.createAndBindUi(this));
     }
 

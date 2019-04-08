@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 public class LoginView extends Composite {
     interface LoginViewUiBinder extends UiBinder<HTMLPanel, LoginView> {
@@ -17,6 +18,12 @@ public class LoginView extends Composite {
     @UiField
     Button loginBtn;
 
+    @UiField
+    TextBox usernameBox;
+
+    @UiField
+    TextBox passwordBox;
+
     public LoginView() {
         initWidget(uiBinder.createAndBindUi(this));
     }
@@ -25,5 +32,20 @@ public class LoginView extends Composite {
         loginBtn.addClickHandler(clickHandler);
     }
 
+    //metode der tømmer tekstboksene username og password så andre ikke kan se det når brugeren logger ud.
 
+    public void clearTextBox(){
+        usernameBox.setText("");
+        passwordBox.setText("");
+    }
+
+    //getters for username og password bokse
+
+    public TextBox getUsernameBox() {
+        return usernameBox;
+    }
+
+    public TextBox getPasswordBox() {
+        return passwordBox;
+    }
 }
