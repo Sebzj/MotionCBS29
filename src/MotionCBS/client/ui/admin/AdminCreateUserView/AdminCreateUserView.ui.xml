@@ -8,7 +8,6 @@
             display: inline-block;
             background-color: lightgray;
             border-spacing: 15px;
-
         }
 
         .button {
@@ -37,6 +36,10 @@
 
     <g:HTMLPanel>
 
+
+
+
+        <!-- Center visning her -->
         <center>
             <g:VerticalPanel styleName="{style.oprett}">
 
