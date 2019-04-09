@@ -8,7 +8,8 @@
         .title {
             font-size: 30px;
             font-weight: bold;
-            color: #fff;
+            color: black;
+
         }
 
 
@@ -21,23 +22,24 @@
 
             <g:north size="5">
                 <g:HTMLPanel styleName="north">
-                    <g:Label styleName="{style.title}" text="DØKBook"/>
+                    <g:Label styleName="{style.title}" text="MotionCBS"/>
                 </g:HTMLPanel>
             </g:north>
 
             <g:south size="3">
                 <g:HTMLPanel styleName="south">
-                    <g:Label styleName="footer" text="Copyright: Andy, Filip, Magnus &amp; Michael"/>
+                    <g:Label styleName="footer" text="Motion CBS - Din religion i fitness"/>
                 </g:HTMLPanel>
             </g:south>
 
             <g:west size="10">
                 <g:FlowPanel styleName="menu">
-                    <g:Button styleName="btn menuBtn" text="Friends" ui:field="usersBtn"/>
-                    <g:Button styleName="btn menuBtn" text="Message" ui:field="messageBtn"/>
-                    <g:Button styleName="btn menuBtn" text="Inbox" ui:field="inboxBtn"/>
+                    <g:VerticalPanel>
+                    <g:Button styleName="btn menuBtn" text="Forside" ui:field="usersBtn"/>
+                    <g:Button styleName="btn menuBtn" text="Dine informationer" ui:field="infoBtn"/>
                     <g:Button styleName="btn menuBtn" text="Settings" ui:field="settingsBtn"/>
                     <g:Button styleName="btn menuBtn" text="Logout" ui:field="logoutBtn"/>
+                    </g:VerticalPanel>
                 </g:FlowPanel>
             </g:west>
 

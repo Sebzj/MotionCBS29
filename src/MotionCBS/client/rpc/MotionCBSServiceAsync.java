@@ -1,9 +1,12 @@
 package MotionCBS.client.rpc;
 
-import MotionCBS.client.MotionCBS;
+
+
+import MotionCBS.shared.User;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 
 public interface MotionCBSServiceAsync {
-    void getMessage(String msg, AsyncCallback<String> async);
+
+
 }

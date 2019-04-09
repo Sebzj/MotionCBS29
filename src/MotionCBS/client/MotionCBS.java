@@ -31,7 +31,7 @@ public class MotionCBS implements EntryPoint {
         RootLayoutPanel.get().add(content);
 
         //Instantiate the RPC service laver the magic call
-        //MotionCBSServiceAsync rpcService = GWT.create(MotionCBSService.class);
+        MotionCBSServiceAsync rpcService = GWT.create(MotionCBSService.class);
 
         //Passes the "screen" and the RPC service to the MainController
         new MainController(content, rpcService);
