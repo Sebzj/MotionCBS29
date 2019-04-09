@@ -22,7 +22,7 @@ private MotionCBSServiceAsync motionCBSServiceAsync;
     this.motionCBSServiceAsync = motionCBSServiceAsync;
     this.userMainView = contentPanel.getUserMainView();
 
-    bindHandlers();
+
 
 
     }
@@ -33,7 +33,6 @@ private MotionCBSServiceAsync motionCBSServiceAsync;
     }
 //metode der fortaeller hvad der sker naar der bliver trykket paa de forskellige buttons.
     class MenuClickHandler implements ClickHandler{
-
 
         @Override
         public void onClick(ClickEvent event) {
