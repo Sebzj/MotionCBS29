@@ -14,4 +14,12 @@
         <url-pattern>/MotionCBS/MotionCBSService</url-pattern>
     </servlet-mapping>  -->
 
+    <servlet>
+        <servlet-name>MotionCBS.MotionCBS MotionCBSService</servlet-name>
+        <servlet-class>MotionCBS.server.MotionCBSServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MotionCBS.MotionCBS MotionCBSService</servlet-name>
+        <url-pattern>/MotionCBS/Data</url-pattern>
+    </servlet-mapping>
 </web-app>

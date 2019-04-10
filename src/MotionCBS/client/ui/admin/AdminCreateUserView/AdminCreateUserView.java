@@ -7,14 +7,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.PasswordTextBox;
-import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.*;
 
 
 public class AdminCreateUserView {
-    interface AdminCreateUserViewUiBinder extends UiBinder<DivElement, AdminCreateUserView> {
+    interface AdminCreateUserViewUiBinder extends UiBinder<HTMLPanel, AdminCreateUserView> {
     }
 
 
@@ -32,7 +29,7 @@ public class AdminCreateUserView {
 
 
     public AdminCreateUserView() {
-        DivElement rootElement = ourUiBinder.createAndBindUi(this);
+        HTMLPanel rootElement = ourUiBinder.createAndBindUi(this);
 
         //Laver ny knap og tilføjer den til Clickhandler
         knap.addClickHandler(new knappen());
