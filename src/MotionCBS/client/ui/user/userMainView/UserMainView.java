@@ -1,3 +1,4 @@
+
 package MotionCBS.client.ui.user.userMainView;
 
 import MotionCBS.client.ui.ContentPanel;
@@ -58,7 +59,7 @@ public class UserMainView extends Composite {
 
 
 
-//metode der tilfoejer clickhandlers til alle knapperne i UserMainView
+    //metode der tilfoejer clickhandlers til alle knapperne i UserMainView
     public void addClickHandlers(ClickHandler clickHandler){
         usersBtn.addClickHandler(clickHandler);
         settingsBtn.addClickHandler(clickHandler);

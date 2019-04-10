@@ -17,7 +17,7 @@ public class ContentPanel extends Composite {
     private LoginView loginView;
     private UserMainView userMainView;
     private AdminMainView adminMainView;
-    private AdminCreateUserView adminCreateUserView;
+
 
     /**
      * The constructor of this class which is creating an instance of the panels and
@@ -36,7 +36,7 @@ public class ContentPanel extends Composite {
         contentPanel.add(adminMainView);
 
         //The panel that is shown when the application starts
-        contentPanel.showWidget(adminMainView);
+        contentPanel.showWidget(userMainView);
 
         //Init the main widget in this class
         initWidget(contentPanel);
