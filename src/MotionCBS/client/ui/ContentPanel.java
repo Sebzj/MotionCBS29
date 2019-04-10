@@ -1,6 +1,6 @@
 package MotionCBS.client.ui;
 
-import MotionCBS.client.ui.admin.AdminCreateUserView.AdminCreateUserView;
+import MotionCBS.client.ui.admin.AdminCreateUserView.AdminCreateUserView.AdminCreateUserView;
 import MotionCBS.client.ui.admin.AdminMainView.AdminMainView;
 import MotionCBS.client.ui.login.LoginView;
 import MotionCBS.client.ui.user.userMainView.UserMainView;
@@ -36,7 +36,7 @@ public class ContentPanel extends Composite {
         contentPanel.add(adminMainView);
 
         //The panel that is shown when the application starts
-        contentPanel.showWidget(userMainView);
+        contentPanel.showWidget(adminMainView);
 
         //Init the main widget in this class
         initWidget(contentPanel);

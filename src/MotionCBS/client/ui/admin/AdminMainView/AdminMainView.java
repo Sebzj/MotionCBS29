@@ -1,5 +1,10 @@
 package MotionCBS.client.ui.admin.AdminMainView;
 
+import MotionCBS.client.ui.admin.AdminAllUserInfoView.AdminAllUserInfoView;
+import MotionCBS.client.ui.admin.AdminCreateUserView.AdminCreateUserView;
+import MotionCBS.client.ui.admin.AdminCreateUserView.AdminCreateUserView.AdminCreateUserView;
+import MotionCBS.client.ui.admin.AdminStatsView.AdminStatsView;
+import MotionCBS.client.ui.admin.AdminUserChangeInfoView.AdminUserChangeInfoView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -21,5 +26,15 @@ public class AdminMainView extends Composite {
 
     public AdminMainView() {
         initWidget(ourUiBinder.createAndBindUi(this));
+
+
     }
+
+
+    private AdminCreateUserView adminCreateUserView;
+    private AdminAllUserInfoView adminAllUserInfoView;
+    private AdminStatsView adminStatsView;
+    private AdminUserChangeInfoView adminUserChangeInfoView;
+
+
 }
