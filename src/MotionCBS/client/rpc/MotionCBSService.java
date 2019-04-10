@@ -10,22 +10,5 @@ import java.util.ArrayList;
 public interface MotionCBSService extends RemoteService {
 
 
-    boolean changeUserInfo(User user) throws IllegalArgumentException;
-
-    void test() throws IllegalArgumentException;
-
-    User authorizeUser(String username, String password) throws IllegalArgumentException;
-
-    boolean sendMessage(Message message) throws IllegalArgumentException;
-
-    ArrayList<Message> getMessages(int userId) throws IllegalArgumentException;
-
-    void updateMessageStatus(int messageId, boolean messageRead) throws IllegalArgumentException;
-
-    ArrayList<User> getUsers(int userId) throws IllegalArgumentException;
-
-    boolean createUser(User user) throws IllegalArgumentException;
-
-    boolean deleteUser(int userId) throws IllegalArgumentException;
 }
 
