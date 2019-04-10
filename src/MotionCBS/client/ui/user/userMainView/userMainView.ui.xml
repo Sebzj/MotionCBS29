@@ -22,7 +22,7 @@
 
             <g:north size="5">
                 <g:HTMLPanel styleName="north">
-                    <g:Label styleName="{style.title}" text="MotionCBS"/>
+                    <g:Label styleName="{style.title}" text="motioncbs"/>
                 </g:HTMLPanel>
             </g:north>
 

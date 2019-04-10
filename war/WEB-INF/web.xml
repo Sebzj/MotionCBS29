@@ -6,20 +6,14 @@
 
    <servlet>
         <servlet-name>Servlet</servlet-name>
-        <servlet-class>MotionCBS.server.MotionCBSServiceImpl</servlet-class>
+        <servlet-class>motioncbs.server.MotionCBSServiceImpl</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/MotionCBS/MotionCBSService</url-pattern>
+        <url-pattern>/motioncbs/Data</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>MotionCBS.MotionCBS MotionCBSService</servlet-name>
-        <servlet-class>MotionCBS.server.MotionCBSServiceImpl</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MotionCBS.MotionCBS MotionCBSService</servlet-name>
-        <url-pattern>/MotionCBS/Data</url-pattern>
-    </servlet-mapping>
+
 </web-app>
+
