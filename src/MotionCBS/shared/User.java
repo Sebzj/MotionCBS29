@@ -46,6 +46,9 @@ public class User implements IsSerializable {
 
     }
 
+    public User(String michael, String username, String password, char m, String email, String s) {
+    }
+
     // getters og saetters for users attributter
 
     public int getId() {
