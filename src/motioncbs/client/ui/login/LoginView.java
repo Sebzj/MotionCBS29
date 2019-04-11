@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.login;
+package motioncbs.client.ui.login;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickHandler;

@@ -41,7 +41,7 @@
     <g:HTMLPanel styleName="{style.htmlPanel}">
 
         <g:VerticalPanel spacing="5" styleName="{style.centerIndhold}">
-            <g:Label styleName="{style.overskrift}">MotionCBS</g:Label>
+            <g:Label styleName="{style.overskrift}">motioncbs</g:Label>
             <g:Label>Username:</g:Label>
             <g:TextBox ui:field="usernameBox" styleName="{style.usernameBox}"/>
             <g:Label>Password:</g:Label>

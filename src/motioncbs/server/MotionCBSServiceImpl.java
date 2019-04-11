@@ -1,8 +1,8 @@
-package MotionCBS.server;
+package motioncbs.server;
 
-import MotionCBS.shared.User;
+import motioncbs.shared.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import MotionCBS.client.rpc.MotionCBSService;
+import motioncbs.client.rpc.MotionCBSService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * Just a simple method which is used to test client server connection
      */
 
-    //@Override
+    @Override
     public void test() throws IllegalArgumentException {
         System.out.println("Server/Client connection is fine");
     }
@@ -54,7 +54,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     /**
      * This method is used for the login by authorizing the username and password in the database
      */
-   // @Override
+    @Override
     public User authorizeUser(String username, String password) throws IllegalArgumentException {
         // By making a SELECT/executeQuery to the database the data will presented/saved in a ResultSet
         ResultSet resultSet = null;
@@ -114,7 +114,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     /**
      * This method is changing a specific users info in the database
      */
-   // @Override
+    @Override
     public boolean changeUserInfo(User user) throws IllegalArgumentException {
         try {
             // Look at the previous method
@@ -142,7 +142,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     /**
      * This message is getting all the users from the database
      */
-   // @Override
+    @Override
     public ArrayList<User> getUsers(int userId) throws IllegalArgumentException {
         ResultSet resultSet = null;
         ArrayList<User> users = new ArrayList<>();
@@ -181,7 +181,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     /**
      * This method is creating a new user in the database
      */
-   // @Override
+    @Override
     public boolean createUser(User user) throws IllegalArgumentException {
         try {
             // Same concept as createMessage method
@@ -205,7 +205,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     /**
      * This method is deleting a specific user in the database
      */
-   // @Override
+    @Override
     public boolean deleteUser(int userId) throws IllegalArgumentException {
         try {
             /*

@@ -1,15 +1,12 @@
-package MotionCBS.client;
+package motioncbs.client;
 
-import MotionCBS.client.logic.MainController;
-import MotionCBS.client.rpc.MotionCBSService;
-import MotionCBS.client.rpc.MotionCBSServiceAsync;
-import MotionCBS.client.ui.ContentPanel;
+import motioncbs.client.logic.MainController;
+import motioncbs.client.rpc.MotionCBSService;
+import motioncbs.client.rpc.MotionCBSServiceAsync;
+import motioncbs.client.ui.ContentPanel;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.*;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>

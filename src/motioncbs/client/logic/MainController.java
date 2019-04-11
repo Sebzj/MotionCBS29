@@ -1,20 +1,18 @@
-package MotionCBS.client.logic;
+package motioncbs.client.logic;
 
-import MotionCBS.client.rpc.MotionCBSService;
-import MotionCBS.client.rpc.MotionCBSServiceAsync;
-import MotionCBS.client.ui.ContentPanel;
-import MotionCBS.client.ui.login.LoginView;
-import MotionCBS.shared.User;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import motioncbs.client.rpc.MotionCBSServiceAsync;
+import motioncbs.client.ui.ContentPanel;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import motioncbs.shared.User;
 
 public class MainController {
 
     //Opretter objekter af contentpanel og Kontrakt mellem server og client?????
     private ContentPanel content;
-    private MotionCBSServiceAsync motionCBSServiceAsync;
+    private MotionCBSServiceAsync motionCBSService;
 
     //opretter objekter af adminController og userController
 
@@ -27,7 +25,7 @@ public class MainController {
 
 
         this.content = content;
-        this.motionCBSServiceAsync = motionCBSService;
+        this.motionCBSService = motionCBSService;
 
         adminController = new AdminController(content, motionCBSService);
         userController = new UserController(content, motionCBSService);
@@ -46,10 +44,55 @@ public class MainController {
             String username = content.getLoginView().getUsernameBox().getText();
             String password = content.getLoginView().getPasswordBox().getText();
 
+// RPC authenticating user method
+            motionCBSService.authorizeUser(username, password, new AsyncCallback<User>() {
+
+                /*
+                 * Handles error from callback function
+                 */
+                @Override
+                public void onFailure(Throwable caught) {
+                    Window.alert("Der skete en fejl");
+
+                }
+
+                /*
+                 * Handles success response from callback
+                 * The callback returns a user
+                 */
+                @Override
+                public void onSuccess(User user) {
+                    // Failed to match input with User in database
+                    if (user == null) {
+                        Window.alert("Wrong username or password");
+                    } else {
+
+                        // Clearing the text fields (username & password) from
+                        // the login screen
+                        content.getLoginView().clearTextBox();
+
+                        /*
+                         * 1) User match in database,
+                         * 2) Checks access level Admin != User
+                         * 3) Change the view to either admin og user view
+                         */
+                        if (user.getType() == 1) {
+                            adminController.loadUser(user);
+                            content.changeView(content.getAdminMainView());
+                        } else if (user.getType() == 2) {
+                            userController.loadUser(user);
+                            content.changeView(content.getUserMainView());
+                            content.getUserMainView().changeView(content.getUserMainView().getUserInfoView());
+                        }
+                    }
+
+                }
+            });
 
         }
     }
 }
+
 
 
 

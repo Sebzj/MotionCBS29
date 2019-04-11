@@ -11,7 +11,7 @@
 
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
-        <url-pattern>/motioncbs/Data</url-pattern>
+        <url-pattern>/motioncbs/motionCBSService</url-pattern>
     </servlet-mapping>
 
 

@@ -5,7 +5,7 @@
       <element id="javaee-facet-resources" facet="MotionCBS29/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="javaee-facet-classes" facet="MotionCBS29/web/Web" />
+          <element id="module-output" name="MotionCBS29" />
         </element>
       </element>
     </root>

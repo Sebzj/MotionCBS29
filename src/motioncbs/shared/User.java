@@ -1,4 +1,4 @@
-package MotionCBS.shared;
+package motioncbs.shared;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
 
@@ -15,6 +15,12 @@ public class User implements IsSerializable {
     private int type;
     private boolean administrator;
 
+    //default constructor
+    public User() {
+
+    }
+
+    //constructor for User
     public User(int id, String firstName, String lastName, int age, String username, String password, char gender, String email, int type, boolean administrator) {
         this.id = id;
         this.firstName = firstName;
@@ -26,27 +32,6 @@ public class User implements IsSerializable {
         this.email = email;
         this.type = type;
         this.administrator = administrator;
-    }
-
-    //constructor for User
-    public User(int id, String firstName, String lastName, int age, String username, String password, char gender, String email, int type) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.username = username;
-        this.password = password;
-        this.gender = gender;
-        this.email = email;
-        this.type = type;
-    }
-
-
-    public User() {
-
-    }
-
-    public User(String michael, String username, String password, char m, String email, String s) {
     }
 
     // getters og saetters for users attributter

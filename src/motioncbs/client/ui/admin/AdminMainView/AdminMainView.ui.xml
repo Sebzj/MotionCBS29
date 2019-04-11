@@ -4,7 +4,8 @@
         <!-- lokal css til brug af vores titel -->
         .title {
         }
-    </ui:style>
+
+        </ui:style>
 
 
     <g:HTMLPanel>
@@ -14,7 +15,7 @@
 
             <g:north size="5">
                 <g:HTMLPanel styleName="north">
-                    <g:Label text="MotionCBS" styleName="{style.title}"/>
+                    <g:Label text="motioncbs" styleName="{style.title}"/>
 
                     <!-- MANGLER UPLOAD AF BILLEDE LOGO HER -->
 
