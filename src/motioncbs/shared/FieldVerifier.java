@@ -1,4 +1,4 @@
-package MotionCBS.shared;
+package motioncbs.shared;
 
 public class FieldVerifier {
 }

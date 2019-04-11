@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.admin.AdminCreateUserView;
+package motioncbs.client.ui.admin.AdminCreateUserView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

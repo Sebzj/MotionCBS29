@@ -1,15 +1,18 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
-<module rename-to="MotionCBS">
+<module rename-to="motioncbs">
 
     <!-- Inherit the core Web Toolkit stuff.                  -->
     <inherits name='com.google.gwt.user.User'/>
 
     <!-- Specify the app entry point class.                   -->
-    <entry-point class='MotionCBS.client.MotionCBS'/>
+    <entry-point class='motioncbs.client.MotionCBS'/>
 
 
     <!-- Specify the app servlets.                   -->
-    <servlet path='/MotionCBSService' class='MotionCBS.server.MotionCBSServiceImpl'/>
+    <servlet path='/MotionCBSService' class='motioncbs.server.MotionCBSServiceImpl'/>
+
+    <source path="client" />
+    <source path="shared" />
 
 </module>

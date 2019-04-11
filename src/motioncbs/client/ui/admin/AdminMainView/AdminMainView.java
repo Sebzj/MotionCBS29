@@ -1,12 +1,9 @@
-package MotionCBS.client.ui.admin.AdminMainView;
+package motioncbs.client.ui.admin.AdminMainView;
 
-import MotionCBS.client.ui.admin.AdminAllUserInfoView.AdminAllUserInfoView;
-import MotionCBS.client.ui.admin.AdminCreateUserView.AdminCreateUserView;
-import MotionCBS.client.ui.admin.AdminStatsView.AdminStatsView;
-import MotionCBS.client.ui.admin.AdminUserChangeInfoView.AdminUserChangeInfoView;
-import MotionCBS.client.ui.user.userChangeInfoView.UserChangeInfoView;
-import MotionCBS.client.ui.user.userInfoView.UserInfoView;
-import MotionCBS.client.ui.user.userSettingsView.UserSettingsVIew;
+import motioncbs.client.ui.admin.AdminAllUserInfoView.AdminAllUserInfoView;
+import motioncbs.client.ui.admin.AdminCreateUserView.AdminCreateUserView;
+import motioncbs.client.ui.admin.AdminStatsView.AdminStatsView;
+import motioncbs.client.ui.admin.AdminUserChangeInfoView.AdminUserChangeInfoView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;

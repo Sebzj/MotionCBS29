@@ -1,4 +1,4 @@
-package MotionCBS.client.ui.user.userInfoView;
+package motioncbs.client.ui.user.userInfoView;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;

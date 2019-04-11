@@ -1,10 +1,9 @@
 
-package MotionCBS.client.ui.user.userMainView;
+package motioncbs.client.ui.user.userMainView;
 
-import MotionCBS.client.ui.ContentPanel;
-import MotionCBS.client.ui.user.userChangeInfoView.UserChangeInfoView;
-import MotionCBS.client.ui.user.userInfoView.UserInfoView;
-import MotionCBS.client.ui.user.userSettingsView.UserSettingsVIew;
+import motioncbs.client.ui.user.userChangeInfoView.UserChangeInfoView;
+import motioncbs.client.ui.user.userInfoView.UserInfoView;
+import motioncbs.client.ui.user.userSettingsView.UserSettingsVIew;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;

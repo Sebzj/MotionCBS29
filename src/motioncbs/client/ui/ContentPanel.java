@@ -1,9 +1,9 @@
-package MotionCBS.client.ui;
+package motioncbs.client.ui;
 
 
-import MotionCBS.client.ui.admin.AdminMainView.AdminMainView;
-import MotionCBS.client.ui.login.LoginView;
-import MotionCBS.client.ui.user.userMainView.UserMainView;
+import motioncbs.client.ui.admin.AdminMainView.AdminMainView;
+import motioncbs.client.ui.login.LoginView;
+import motioncbs.client.ui.user.userMainView.UserMainView;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -36,13 +36,13 @@ public class ContentPanel extends Composite {
         contentPanel.add(adminMainView);
 
         //The panel that is shown when the application starts
-        contentPanel.showWidget(adminMainView);
+        contentPanel.showWidget(userMainView);
 
         //Init the main widget in this class
         initWidget(contentPanel);
     }
 
-    //opretter metode til at aendrer views
+    //opretter metode til at aendre views
     public void changeView(Widget panel) {
         contentPanel.showWidget(panel);
     }
