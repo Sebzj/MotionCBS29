@@ -2,5 +2,7 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
 
+        <g:Label> Hey bøsse ! statsview</g:Label>
+
     </g:HTMLPanel>
 </ui:UiBinder>

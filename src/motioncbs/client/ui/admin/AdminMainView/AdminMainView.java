@@ -11,14 +11,9 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
 
 public class AdminMainView extends Composite {
-    interface AdminMainViewUiBinder extends UiBinder<HTMLPanel, AdminMainView> {
-    }
 
+    private static AdminMainViewUiBinder ourUiBinder = GWT.create(AdminMainViewUiBinder.class);
 
-    @UiField
-    Button logoutBtn;
-    @UiField
-    DeckLayoutPanel centerPanel;
 
     private AdminMainView adminMainView;
     private AdminAllUserInfoView adminAllUserInfoView;
@@ -26,8 +21,15 @@ public class AdminMainView extends Composite {
     private AdminStatsView adminStatsView;
     private AdminUserChangeInfoView adminUserChangeInfoView;
 
-    private static AdminMainViewUiBinder ourUiBinder = GWT.create(AdminMainViewUiBinder.class);
+    @UiField
+    Button logoutBtn, statsViewBtn, userInfoBtn, opretBtn;
+    @UiField
+    DeckLayoutPanel centerPanel;
 
+    interface AdminMainViewUiBinder extends UiBinder<HTMLPanel, AdminMainView> {
+    }
+
+    //Constructor af klassen der opretter en instans af panelerne og tilføjer dem til Decklayoutpanelet
     public AdminMainView() {
         initWidget(ourUiBinder.createAndBindUi(this));
 
@@ -51,13 +53,51 @@ public class AdminMainView extends Composite {
 
     //metode der tilfoejer clickhandlers til alle knapperne i UserMainView
     public void addClickHandlers(ClickHandler clickHandler){
-        //usersBtn.addClickHandler(clickHandler);
-        //settingsBtn.addClickHandler(clickHandler);
-        //infoBtn.addClickHandler(clickHandler);
+        opretBtn.addClickHandler(clickHandler);
+        statsViewBtn.addClickHandler(clickHandler);
+        userInfoBtn.addClickHandler(clickHandler);
         logoutBtn.addClickHandler(clickHandler);
     }
+
 
     public void changeView(Widget panel){
         centerPanel.showWidget(panel);
     }
+
+    //Gettes for viewss
+    public AdminAllUserInfoView getAdminAllUserInfoView() {
+        return adminAllUserInfoView;
+    }
+
+    public AdminCreateUserView getAdminCreateUserView() {
+        return adminCreateUserView;
+    }
+
+    public AdminStatsView getAdminStatsView() {
+        return adminStatsView;
+    }
+
+
+
+    //get methods til vores menu button  - til at bruge clickhandlers i vores AdminController
+    public Button getOpretBtn() {
+        return opretBtn;
+    }
+
+    public Button getLogoutBtn() {
+        return logoutBtn;
+    }
+
+    public Button getStatsViewBtn() {
+        return statsViewBtn;
+    }
+
+    public Button getUserInfoBtn() {
+        return userInfoBtn;
+
+    }
+
+
+
+
 }

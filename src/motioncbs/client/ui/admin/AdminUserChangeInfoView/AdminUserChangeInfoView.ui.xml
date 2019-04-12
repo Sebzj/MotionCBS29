@@ -2,5 +2,7 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <g:HTMLPanel>
 
+        <g:Label> Info change view her mine b's</g:Label>
+
     </g:HTMLPanel>
 </ui:UiBinder>

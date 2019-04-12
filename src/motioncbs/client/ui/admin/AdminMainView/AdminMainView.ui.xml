@@ -2,9 +2,41 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:style>
         <!-- lokal css til brug af vores titel -->
+        .north {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #1f1f1f;
+        }
+        .south {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: #1f1f1f;
+        }
         .title {
+            color: white;
         }
 
+        .lbl {
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            font-style: italic;
+            margin-right: 20px;
+
+        }
+        .button:hover {
+            background-color: grey; /* Green */
+            color: white;
+        }
+
+        .menu {
+            padding: 10px;
+            background-color: #E6E8EC;
+            spacing: 15px;
+            float: left;
+        }
         </ui:style>
 
 
@@ -13,29 +45,39 @@
 
         <g:DockLayoutPanel unit="EM" width="100%" height="100%">
 
+
+            <!-- HEADER -->
             <g:north size="5">
-                <g:HTMLPanel styleName="north">
-                    <g:Label text="motioncbs" styleName="{style.title}"/>
+                <g:HTMLPanel styleName="{style.north}">
+                    <g:Label styleName="{style.title}"> MotionCBS </g:Label>
 
                     <!-- MANGLER UPLOAD AF BILLEDE LOGO HER -->
 
                 </g:HTMLPanel>
             </g:north>
 
+            <!-- FOOTER -->
             <g:south size="3">
-                <g:HTMLPanel styleName="south">
-                    <g:Label styleName="footer" text="CVR: 12345678"/>
-                    <g:Label styleName="footer" text="Kontakt: info@motioncbs.dk"/>
-                    <g:Label styleName="footer" text="Åbningstider: Alle ugens dage: 05:00-23:00"/>
+                <g:HTMLPanel styleName="{style.south}">
+                    <g:Label styleName="{style.lbl}" text="CVR: 12345678"/>
+                    <g:Label styleName="{style.lbl}" text="Kontakt: info@motioncbs.dk"/>
+                    <g:Label styleName="{style.lbl}" text="Åbningstider: Alle ugens dage: 05:00-23:00"/>
                 </g:HTMLPanel>
             </g:south>
 
+
+            <!-- WEST // MENU  -->
             <g:west size="10">
-                <g:FlowPanel styleName="menu">
-                    <g:Button styleName="btn menuBtn" text="Logout" ui:field="logoutBtn"/>
+                <g:FlowPanel styleName="{style.menu}">
+                    <g:Button styleName="{style.button}" text="Logout" ui:field="logoutBtn"/>
+                    <g:Button styleName="{style.button}" text="Se statistikker" ui:field="statsViewBtn"/>
+                    <g:Button styleName="{style.button}" text="Medlemsinfo" ui:field="userInfoBtn"/>
+                    <g:Button styleName="{style.button}" text="Opret medlem" ui:field="opretBtn"/>
+
                 </g:FlowPanel>
             </g:west>
 
+            <!-- CENTER / INDHOLD  -->
             <g:center>
                 <g:DeckLayoutPanel ui:field="centerPanel"/>
             </g:center>
