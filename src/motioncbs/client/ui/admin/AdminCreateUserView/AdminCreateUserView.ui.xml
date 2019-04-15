@@ -37,11 +37,11 @@
     <g:HTMLPanel>
 
 
-
-
         <!-- Center visning her -->
         <center>
             <g:VerticalPanel styleName="{style.oprett}">
+
+                <g:Label>For at oprette et medlem - venligst udfyld nedenstående:</g:Label>
 
                 <!-- Tekst bokse her -->
                 <g:HorizontalPanel>
@@ -51,6 +51,12 @@
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Efternavn:</g:Label>
                     <g:TextBox ui:field="efternavnBox" styleName="{style.boxs}"></g:TextBox>
+                </g:HorizontalPanel>
+
+                <!-- Alder txt felt her -->
+                <g:HorizontalPanel>
+                    <g:Label styleName="{style.lbl}">Alder:</g:Label>
+                    <g:TextBox styleName="{style.boxs}" ui:field="alderTxt"></g:TextBox>
                 </g:HorizontalPanel>
 
                 <!-- Køn RadioButton her -->
