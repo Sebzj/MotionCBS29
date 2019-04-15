@@ -63,5 +63,8 @@ body, td, a, div, .p {
     width: 100px;
     margin-bottom: 10px;
 
+}
 
+.textBox {
+    padding: 5px;
 }
