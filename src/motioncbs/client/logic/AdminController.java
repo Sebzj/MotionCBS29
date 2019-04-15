@@ -11,7 +11,7 @@ import motioncbs.shared.User;
 
 import java.util.ArrayList;
 
-public class AdminController {
+class AdminController {
 
     private User currentUser;
     private ContentPanel content;
@@ -19,7 +19,7 @@ public class AdminController {
     private MotionCBSServiceAsync motionCBSServiceAsync;
     //opretter constructor
 
-    public AdminController (ContentPanel content, MotionCBSServiceAsync motionCBSService) {
+    AdminController(ContentPanel content, MotionCBSServiceAsync motionCBSService) {
 
         this.content = content;
         this.motionCBSServiceAsync = motionCBSService;
@@ -54,7 +54,7 @@ public class AdminController {
         }
     }
 
-    public void loadUser(User currentUser) {
+    void loadUser(User currentUser) {
         this.currentUser = currentUser;
         loadTables();
     }
