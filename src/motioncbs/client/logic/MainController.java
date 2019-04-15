@@ -6,6 +6,7 @@ import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import motioncbs.server.MotionCBSServiceImpl;
 import motioncbs.shared.User;
 
 public class MainController {
@@ -22,7 +23,6 @@ public class MainController {
     //opretter constructor
 
     public MainController (ContentPanel content, MotionCBSServiceAsync motionCBSService) {
-
 
         this.content = content;
         this.motionCBSService = motionCBSService;
@@ -44,6 +44,7 @@ public class MainController {
             String username = content.getLoginView().getUsernameBox().getText();
             String password = content.getLoginView().getPasswordBox().getText();
 
+
 // RPC authenticating user method
             motionCBSService.authorizeUser(username, password, new AsyncCallback<User>() {
 
@@ -52,8 +53,8 @@ public class MainController {
                  */
                 @Override
                 public void onFailure(Throwable caught) {
-                    Window.alert("Der skete en fejl");
-
+                    Window.alert(caught.getMessage());
+                    //Window.alert("Der skete en fejl");
                 }
 
                 /*
@@ -76,10 +77,10 @@ public class MainController {
                          * 2) Checks access level Admin != User
                          * 3) Change the view to either admin og user view
                          */
-                        if (user.getType() == 1) {
+                        if (user.isAdministrator()) {
                             adminController.loadUser(user);
                             content.changeView(content.getAdminMainView());
-                        } else if (user.getType() == 2) {
+                        } else if (!user.isAdministrator()); {
                             userController.loadUser(user);
                             content.changeView(content.getUserMainView());
                             content.getUserMainView().changeView(content.getUserMainView().getUserInfoView());

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface MotionCBSServiceAsync {
 
 
-    void test(AsyncCallback<Void> async);
+    void test(AsyncCallback<Void> asyncCallback) throws IllegalArgumentException;
 
     void authorizeUser(String username, String password, AsyncCallback<User> async);
 

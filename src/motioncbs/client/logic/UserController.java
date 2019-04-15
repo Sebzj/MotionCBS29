@@ -20,9 +20,9 @@ public class UserController {
 
     //opretter constructor
 
-    public UserController(ContentPanel contentPanel, MotionCBSServiceAsync motionCBSServiceAsync) {
+    public UserController(ContentPanel contentPanel, MotionCBSServiceAsync motionCBSService) {
         this.contentPanel = contentPanel;
-        this.motionCBSServiceAsync = motionCBSServiceAsync;
+        this.motionCBSServiceAsync = motionCBSService;
         this.userMainView = contentPanel.getUserMainView();
 
         bindHandlers();

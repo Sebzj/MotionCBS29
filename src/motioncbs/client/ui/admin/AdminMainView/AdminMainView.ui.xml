@@ -3,9 +3,8 @@
     <ui:style>
         <!-- lokal css til brug af vores titel -->
         .north {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+            height: 100%;
+            width: 100%;
             background-color: #1f1f1f;
         }
         .south {
@@ -15,7 +14,12 @@
             background-color: #1f1f1f;
         }
         .title {
+            font-size: 30px;
+            font-weight: bold;
             color: white;
+            padding-left: 550px;
+            padding-top: 25px;
+
         }
 
         .lbl {
@@ -26,17 +30,29 @@
             margin-right: 20px;
 
         }
-        .button:hover {
-            background-color: grey; /* Green */
+        .button:hover{
+
+        }
+        .button {
             color: white;
+            height: 40px;
+            width: 100px;
+            border: none;
+            border-radius: 2px;
+            font-size: 15px;
+            background-color: #333;
+            cursor: hand;
+            padding: 5px;
+            margin-bottom: 10px;
+
         }
 
         .menu {
-            padding: 10px;
-            background-color: #E6E8EC;
-            spacing: 15px;
-            float: left;
+            padding: 30px;
+            background-color: beige;
+
         }
+
         </ui:style>
 
 

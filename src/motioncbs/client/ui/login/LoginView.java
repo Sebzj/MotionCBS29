@@ -19,10 +19,7 @@ public class LoginView extends Composite {
     Button loginBtn;
 
     @UiField
-    TextBox usernameBox;
-
-    @UiField
-    TextBox passwordBox;
+    TextBox usernameBox, passwordBox;
 
     public LoginView() {
         initWidget(uiBinder.createAndBindUi(this));

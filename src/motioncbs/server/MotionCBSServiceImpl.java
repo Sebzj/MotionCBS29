@@ -3,6 +3,9 @@ package motioncbs.server;
 import motioncbs.shared.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import motioncbs.client.rpc.MotionCBSService;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,9 +18,11 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * the same pass as your computer password
      */
     private static final String URL = "jdbc:mysql://localhost:3306/Data?useSSL=false";
-    private static final String USERNAME = "nybruger";
-    private static final String PASSWORD = "";
+    private static final String USERNAME = "newuser";
+    private static final String PASSWORD = "zard8238473mwe";
     private static Connection connection = null;
+
+
 
     /**
      * The constructor which is creating the connection the the database
@@ -84,11 +89,13 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
             while (resultSet.next()) {
                 user = new User();
                 user.setId(resultSet.getInt("id"));
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
+                user.setAge(resultSet.getInt("age"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
                 user.setGender(resultSet.getString("gender").charAt(0));
-                user.setEmail(resultSet.getString("email"));
-                user.setType(resultSet.getInt("type"));
+                user.setAdministrator(resultSet.getBoolean("administrator"));
 
             }
             // The catch which is used if either the statement or connection is failing
@@ -118,7 +125,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     public boolean changeUserInfo(User user) throws IllegalArgumentException {
         try {
             // Look at the previous method
-            PreparedStatement updateUser = connection.prepareStatement("UPDATE users SET " + "password = ?, "
+            PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET " + "password = ?, "
                     + "gender = ?, "  + "email = ? " + "WHERE id = ?");
 
             updateUser.setString(1, user.getPassword());
