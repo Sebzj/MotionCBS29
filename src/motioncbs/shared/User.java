@@ -11,9 +11,8 @@ public class User implements IsSerializable {
     private String username;
     private String password;
     private char gender;
-    private String email;
-    private int type;
-    private boolean administrator;
+    private int medlemstype;
+
 
     //default constructor
     public User() {
@@ -21,7 +20,7 @@ public class User implements IsSerializable {
     }
 
     //constructor for User
-    public User(int id, String firstName, String lastName, int age, String username, String password, char gender, String email, int type, boolean administrator) {
+    public User(int id, String firstName, String lastName, int age, String username, String password, char gender, int medlemstype) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,9 +28,7 @@ public class User implements IsSerializable {
         this.username = username;
         this.password = password;
         this.gender = gender;
-        this.email = email;
-        this.type = type;
-        this.administrator = administrator;
+        this.medlemstype = medlemstype;
     }
 
     // getters og saetters for users attributter
@@ -92,27 +89,11 @@ public class User implements IsSerializable {
         this.gender = gender;
     }
 
-    public String getEmail() {
-        return email;
+    public int getMedlemstype() {
+        return medlemstype;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public boolean isAdministrator() {
-        return administrator;
-    }
-
-    public void setAdministrator(boolean administrator) {
-        this.administrator = administrator;
+    public void setMedlemstype(int medlemstype) {
+        this.medlemstype = medlemstype;
     }
 }

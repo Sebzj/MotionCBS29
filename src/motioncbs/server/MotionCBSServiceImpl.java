@@ -31,7 +31,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     public MotionCBSServiceImpl() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Connected");
+
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             System.exit(1);
@@ -97,7 +97,8 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
                 user.setGender(resultSet.getString("gender").charAt(0));
-                user.setAdministrator(resultSet.getBoolean("administrator"));
+                user.setMedlemstype(resultSet.getInt("medlemstype"));
+
 
             }
             // The catch which is used if either the statement or connection is failing
@@ -127,15 +128,18 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     public boolean changeUserInfo(User user) throws IllegalArgumentException {
         try {
             // Look at the previous method
-            PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET " + "password = ?, "
-                    + "gender = ?, "  + "email = ? " + "WHERE id = ?");
+            PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET " + "age = ?," +"username = ?," + "password = ?, "
+                    + "gender = ?, " + "WHERE id = ?");
 
-            updateUser.setString(1, user.getPassword());
+            updateUser.setInt(1, user.getAge());
 
-            updateUser.setString(2, user.getGender() + "");
+            updateUser.setString(2,user.getUsername());
 
-            updateUser.setString(3, user.getEmail());
-            updateUser.setInt(4, user.getId());
+            updateUser.setString(3, user.getPassword());
+
+            updateUser.setString(4, user.getGender() + "");
+
+            updateUser.setInt(5, user.getMedlemstype());
 
             int rowsAffected = updateUser.executeUpdate();
 
@@ -158,7 +162,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
 
         try {
             // Same concept as getMessages method except there is no join in this statement
-            PreparedStatement getUsers = connection.prepareStatement("SELECT * FROM users WHERE type != 1");
+            PreparedStatement getUsers = connection.prepareStatement("SELECT * FROM users WHERE medlemstype != 4");
             //getUsers.setInt(1, userId);
             resultSet = getUsers.executeQuery();
 
@@ -168,8 +172,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
                 user.setGender(resultSet.getString("gender").charAt(0));
-                user.setEmail(resultSet.getString("email"));
-                user.setType(resultSet.getInt("type"));
+                user.setMedlemstype(resultSet.getInt("medlemstype"));
 
                 users.add(user);
 

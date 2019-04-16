@@ -85,10 +85,10 @@
             <!-- WEST // MENU  -->
             <g:west size="10">
                 <g:FlowPanel styleName="{style.menu}">
-                    <g:Button styleName="{style.button}" text="Logout" ui:field="logoutBtn"/>
-                    <g:Button styleName="{style.button}" text="Se statistikker" ui:field="statsViewBtn"/>
-                    <g:Button styleName="{style.button}" text="Medlemsinfo" ui:field="userInfoBtn"/>
                     <g:Button styleName="{style.button}" text="Opret medlem" ui:field="opretBtn"/>
+                    <g:Button styleName="{style.button}" text="Medlemsinfo" ui:field="userInfoBtn"/>
+                    <g:Button styleName="{style.button}" text="Se statistikker" ui:field="statsViewBtn"/>
+                    <g:Button styleName="{style.button}" text="Logout" ui:field="logoutBtn"/>
 
                 </g:FlowPanel>
             </g:west>

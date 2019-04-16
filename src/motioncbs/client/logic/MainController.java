@@ -53,8 +53,7 @@ public class MainController {
                  */
                 @Override
                 public void onFailure(Throwable caught) {
-                    Window.alert(caught.getMessage());
-                    //Window.alert("Der skete en fejl");
+                    Window.alert("Der skete en fejl");
                 }
 
                 /*
@@ -75,12 +74,14 @@ public class MainController {
                         /*
                          * 1) User match in database,
                          * 2) Checks access level Admin != User
-                         * 3) Change the view to either admin og user view
+                         * 3) Change the view to either admin or user view
                          */
-                        if (user.isAdministrator()) {
+                        if (user.getMedlemstype() == 4) {
                             adminController.loadUser(user);
                             content.changeView(content.getAdminMainView());
-                        } else if (!user.isAdministrator()); {
+                            content.getAdminMainView().changeView(content.getAdminMainView().getAdminStatsView());
+
+                        } else  {
                             userController.loadUser(user);
                             content.changeView(content.getUserMainView());
                             content.getUserMainView().changeView(content.getUserMainView().getUserInfoView());
