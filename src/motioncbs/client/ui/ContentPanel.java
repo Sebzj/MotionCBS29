@@ -3,10 +3,10 @@ package motioncbs.client.ui;
 
 import motioncbs.client.ui.admin.AdminMainView.AdminMainView;
 import motioncbs.client.ui.login.LoginView;
-import motioncbs.client.ui.user.userMainView.UserMainView;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import motioncbs.client.ui.user.userMainView.UserMainView;
 
 public class ContentPanel extends Composite {
 
@@ -36,7 +36,7 @@ public class ContentPanel extends Composite {
         contentPanel.add(adminMainView);
 
         //The panel that is shown when the application starts
-        contentPanel.showWidget(adminMainView);
+        contentPanel.showWidget(loginView);
 
         //Init the main widget in this class
         initWidget(contentPanel);

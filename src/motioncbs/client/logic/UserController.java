@@ -4,9 +4,9 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
-import motioncbs.client.ui.user.userMainView.UserMainView;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import motioncbs.client.ui.user.userMainView.UserMainView;
 import motioncbs.shared.User;
 
 import java.util.ArrayList;

@@ -4,17 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-   <servlet>
-        <servlet-name>Servlet</servlet-name>
+    <servlet>
+        <servlet-name>motioncbs.MotionCBS MotionCBSService</servlet-name>
         <servlet-class>motioncbs.server.MotionCBSServiceImpl</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>Servlet</servlet-name>
-        <url-pattern>/motioncbs/motionCBSService</url-pattern>
+        <servlet-name>motioncbs.MotionCBS MotionCBSService</servlet-name>
+        <url-pattern>/MotionCBS/motionCBSService</url-pattern>
     </servlet-mapping>
-
-
 
 </web-app>
 

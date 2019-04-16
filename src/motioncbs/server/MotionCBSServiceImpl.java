@@ -3,6 +3,7 @@ package motioncbs.server;
 import motioncbs.shared.User;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import motioncbs.client.rpc.MotionCBSService;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -30,6 +31,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
     public MotionCBSServiceImpl() {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            System.out.println("Connected");
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
             System.exit(1);

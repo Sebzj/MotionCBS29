@@ -9,7 +9,7 @@ import motioncbs.client.ui.ContentPanel;
 import motioncbs.client.ui.admin.AdminMainView.AdminMainView;
 import motioncbs.shared.User;
 
-
+import java.util.ArrayList;
 
 class AdminController {
 
@@ -56,9 +56,24 @@ class AdminController {
 
     void loadUser(User currentUser) {
         this.currentUser = currentUser;
+        loadTables();
+    }
+    private void loadTables() {
+        motionCBSServiceAsync.getUsers(currentUser.getId(), new AsyncCallback<ArrayList<User>>() {
+
+            @Override
+            public void onFailure(Throwable caught) {
+                Window.alert("Could not load users");
+            }
+
+            @Override
+            public void onSuccess(ArrayList<User> users) {
+                // Adding all the users to the DataProvider (ArrayList)
+               // motionCBSServiceAsync.getList().addAll(users);
+            }
+        });
 
     }
-
 
 }
 
