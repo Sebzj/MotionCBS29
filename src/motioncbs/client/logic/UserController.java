@@ -2,6 +2,7 @@ package motioncbs.client.logic;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.view.client.ListDataProvider;
 import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -18,6 +19,11 @@ public class UserController {
     private MotionCBSServiceAsync motionCBSServiceAsync;
     private User currentUser;
 
+
+    //instantierer et objekt af ListDataProvideren som indeholder en arraylist med brugerne
+    // der skal vises i vores datagrid
+    private ListDataProvider<User> listProviderUsers;
+
     //opretter constructor
 
     public UserController(ContentPanel contentPanel, MotionCBSServiceAsync motionCBSService) {
@@ -26,6 +32,11 @@ public class UserController {
         this.userMainView = contentPanel.getUserMainView();
 
         bindHandlers();
+
+        listProviderUsers = new ListDataProvider<>();
+
+        userMainView.getUserInfoView().initUsersTable(listProviderUsers);
+
     }
 
     private void bindHandlers() {
@@ -48,7 +59,7 @@ public class UserController {
                 userMainView.changeView(userMainView.getUserMainView());
             } else if (event.getSource() == userMainView.getLogoutBtn()) {
                 contentPanel.changeView(contentPanel.getLoginView());
-                //currentUser=null;
+                currentUser=null;
 
             }
         }
@@ -62,8 +73,8 @@ public class UserController {
     /**
      * Method which both loads:
      * 1) The table of users into the DataProvider which contains an ArrayList.
-     * 2) The tables of messages into the DataProviders which contains an ArrayList.
-     * This is done by making a RPC call to the server which gets the users and messages from the database
+
+     * This is done by making a RPC call to the server which gets the users from the database
      */
     private void loadTables() {
 
@@ -78,7 +89,7 @@ public class UserController {
             @Override
             public void onSuccess(ArrayList<User> users) {
                 // Adding all the users to the DataProvider (ArrayList)
-                //listProviderUsers.getList().addAll(users);
+                listProviderUsers.getList().addAll(users);
             }
         });
     }

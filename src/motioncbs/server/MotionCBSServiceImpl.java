@@ -96,8 +96,8 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
                 user.setAge(resultSet.getInt("age"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
-                user.setGender(resultSet.getString("gender").charAt(0));
-                user.setMedlemstype(resultSet.getInt("medlemstype"));
+                user.setGender(resultSet.getString("gender"));
+                user.setCustomertype(resultSet.getInt("customertype"));
 
 
             }
@@ -139,7 +139,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
 
             updateUser.setString(4, user.getGender() + "");
 
-            updateUser.setInt(5, user.getMedlemstype());
+            updateUser.setInt(5, user.getCustomertype());
 
             int rowsAffected = updateUser.executeUpdate();
 
@@ -162,17 +162,20 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
 
         try {
             // Same concept as getMessages method except there is no join in this statement
-            PreparedStatement getUsers = connection.prepareStatement("SELECT * FROM users WHERE medlemstype != 4");
+            PreparedStatement getUsers = connection.prepareStatement("SELECT * FROM users WHERE customertype != 4");
             //getUsers.setInt(1, userId);
             resultSet = getUsers.executeQuery();
 
             while (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
+                user.setAge(resultSet.getInt("age"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
-                user.setGender(resultSet.getString("gender").charAt(0));
-                user.setMedlemstype(resultSet.getInt("medlemstype"));
+                user.setGender(resultSet.getString("gender"));
+                user.setCustomertype(resultSet.getInt("customertype"));
 
                 users.add(user);
 

@@ -96,6 +96,7 @@
             <!-- CENTER / INDHOLD  -->
             <g:center>
                 <g:DeckLayoutPanel ui:field="centerPanel"/>
+
             </g:center>
 
         </g:DockLayoutPanel>

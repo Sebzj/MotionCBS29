@@ -1,6 +1,61 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style>
+        .usernameContainer {
+
+        }
+
+        .usernameLbl {
+
+        }
+
+        .changeInfoContainer {
+
+        }
+
+        .title {
+
+        }
+
+        .input {
+
+        }
+
+        .radioButtons {
+
+        }
+
+        .textArea {
+
+        }</ui:style>
     <g:HTMLPanel>
 
+        <g:HTMLPanel styleName="{style.usernameContainer}">
+            <g:Label ui:field="usernameLbl" styleName="{style.usernameLbl}"/>
+        </g:HTMLPanel>
+
+        <g:VerticalPanel spacing="15">
+
+
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Password:"/>
+                <g:TextBox styleName="textInput {style.input}" ui:field="passwordBox"/>
+            </g:FlowPanel>
+
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="E-mail:"/>
+                <g:TextBox styleName="textInput {style.input}" ui:field="emailBox"/>
+            </g:FlowPanel>
+
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Gender:"/>
+                <g:RadioButton styleName="{style.radioButtons}" name="genderSettings" text="Male" ui:field="genderMaleRBtn"/>
+                <g:RadioButton styleName="{style.radioButtons}" name="genderSettings" text="Female"
+                               ui:field="genderFemaleRBtn"/>
+            </g:FlowPanel>
+
+
+            <g:Button styleName="btn" ui:field="changeProfileBtn" text="Change"/>
+        </g:VerticalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

@@ -30,6 +30,8 @@ public class MainController {
         adminController = new AdminController(content, motionCBSService);
         userController = new UserController(content, motionCBSService);
         bindHandlers();
+
+
     }
 
     public void bindHandlers(){
@@ -76,7 +78,7 @@ public class MainController {
                          * 2) Checks access level Admin != User
                          * 3) Change the view to either admin or user view
                          */
-                        if (user.getMedlemstype() == 4) {
+                        if (user.getCustomertype() == 4) {
                             adminController.loadUser(user);
                             content.changeView(content.getAdminMainView());
                             content.getAdminMainView().changeView(content.getAdminMainView().getAdminStatsView());

@@ -3,7 +3,7 @@ package motioncbs.client.ui.user.userMainView;
 
 import motioncbs.client.ui.user.userChangeInfoView.UserChangeInfoView;
 import motioncbs.client.ui.user.userInfoView.UserInfoView;
-import motioncbs.client.ui.user.userSettingsView.UserSettingsVIew;
+import motioncbs.client.ui.user.userSettingsView.UserSettingsView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -33,7 +33,7 @@ public class UserMainView extends Composite {
 
     private UserChangeInfoView userChangeInfoView;
     private UserInfoView userInfoView;
-    private UserSettingsVIew userSettingsView;
+    private UserSettingsView userSettingsView;
     private UserMainView userMainView;
 
 
@@ -49,7 +49,7 @@ public class UserMainView extends Composite {
         centerPanel.add(userInfoView);
 
 
-        userSettingsView = new UserSettingsVIew();
+        userSettingsView = new UserSettingsView();
         centerPanel.add(userSettingsView);
 
         //The panel that is shown when the application starts
@@ -95,7 +95,7 @@ public class UserMainView extends Composite {
         return userInfoView;
     }
 
-    public UserSettingsVIew getUserSettingsView() {
+    public UserSettingsView getUserSettingsView() {
         return userSettingsView;
     }
 

@@ -10,8 +10,8 @@ public class User implements IsSerializable {
     private int age;
     private String username;
     private String password;
-    private char gender;
-    private int medlemstype;
+    private String gender;
+    private int customertype;
 
 
     //default constructor
@@ -20,7 +20,7 @@ public class User implements IsSerializable {
     }
 
     //constructor for User
-    public User(int id, String firstName, String lastName, int age, String username, String password, char gender, int medlemstype) {
+    public User(int id, String firstName, String lastName, int age, String username, String password, String gender, int customertype) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,7 +28,7 @@ public class User implements IsSerializable {
         this.username = username;
         this.password = password;
         this.gender = gender;
-        this.medlemstype = medlemstype;
+        this.customertype = customertype;
     }
 
     // getters og saetters for users attributter
@@ -81,19 +81,19 @@ public class User implements IsSerializable {
         this.password = password;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int getMedlemstype() {
-        return medlemstype;
+    public int getCustomertype() {
+        return customertype;
     }
 
-    public void setMedlemstype(int medlemstype) {
-        this.medlemstype = medlemstype;
+    public void setCustomertype(int customertype) {
+        this.customertype = customertype;
     }
 }
