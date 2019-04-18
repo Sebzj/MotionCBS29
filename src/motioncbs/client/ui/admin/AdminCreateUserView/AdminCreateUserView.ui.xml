@@ -8,17 +8,13 @@
             display: inline-block;
             background-color: lightgray;
             border-spacing: 15px;
+            spacing: 15px;
         }
 
         .button {
             background-color: #BBBBBB;
-            width: 20%;
-            height: 25%;
-        }
-
-        .boxs {
-            width: 200px;
-            height: 18px;
+            width: 90px;
+            height: 40px;
         }
 
         .lbl {
@@ -30,6 +26,10 @@
         .obs {
             font-style: italic;
             font-size: 8px;
+        }
+
+        .rb {
+
         }
 
     </ui:style>
@@ -46,35 +46,37 @@
                 <!-- Tekst bokse her -->
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Fornavn:</g:Label>
-                    <g:TextBox ui:field="fornavnBox" styleName="{style.boxs}"></g:TextBox>
+                    <g:TextBox ui:field="fornavnBox" styleName="boxs"></g:TextBox>
                 </g:HorizontalPanel>
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Efternavn:</g:Label>
-                    <g:TextBox ui:field="efternavnBox" styleName="{style.boxs}"></g:TextBox>
+                    <g:TextBox ui:field="efternavnBox" styleName="boxs"></g:TextBox>
                 </g:HorizontalPanel>
 
                 <!-- Alder txt felt her -->
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Alder:</g:Label>
-                    <g:TextBox styleName="{style.boxs}" ui:field="alderTxt"></g:TextBox>
+                    <g:TextBox styleName="boxs" ui:field="alderTxt"></g:TextBox>
                 </g:HorizontalPanel>
 
                 <!-- Køn RadioButton her -->
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Køn:</g:Label>
-                    <g:RadioButton name="mand" ui:field="rmand">Mand</g:RadioButton>
-                    <g:RadioButton name="kvinde" ui:field="rkvinde">Kvinde</g:RadioButton>
+                    <g:RadioButton name="mand" ui:field="rmand" text="Mand">Mand</g:RadioButton>
+                    <g:RadioButton name="kvinde" ui:field="rkvinde" text="Kvinde">Kvinde</g:RadioButton>
                 </g:HorizontalPanel>
 
 
                 <!-- Brugernavn- samt password bokse her -->
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Brugernavn:</g:Label>
-                    <g:TextBox ui:field="brugernavnBox" styleName="{style.boxs}"></g:TextBox>
+                    <g:TextBox ui:field="brugernavnBox" styleName="boxs"></g:TextBox>
                 </g:HorizontalPanel>
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Password:</g:Label>
-                    <g:PasswordTextBox ui:field="passwordBox" styleName="{style.boxs}"></g:PasswordTextBox>
+                    <g:PasswordTextBox ui:field="passwordBox" styleName="boxs"/>
+                    <g:RadioButton styleName="{style.rb}" name="Vis" ui:field="visPass" text="Vis"/>
+                    <g:RadioButton styleName="{style.rb}" name="Skjul" ui:field="skjulPass" text="Skjul"/>
                 </g:HorizontalPanel>
 
 
@@ -89,8 +91,11 @@
                     <g:Label styleName="{style.obs}" >(OBS: Medlemstype A er medlemsskab med fitness uden hold- eller instruktørtimer, medlemskab B er med fitness og hold, medlemsskab C er med fitness samt hold- og instruktørtræning)</g:Label>
                 </g:VerticalPanel>
 
+                <g:HorizontalPanel>
                 <!-- Opret bruger knap -->
                 <g:Button ui:field="knap" styleName="{style.button}">Opret bruger</g:Button>
+                <g:Button ui:field="rydBtn" styleName="{style.button}" text="Ryd alt"/>
+                </g:HorizontalPanel>
 
 
             </g:VerticalPanel>

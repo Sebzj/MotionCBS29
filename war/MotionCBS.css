@@ -67,8 +67,22 @@ body, td, a, div, .p {
 
 .textBox {
     padding: 5px;
+    background-color: red;
+    border-color: red;
 }
 
 .textInput {
 
+}
+
+/* mark error in inputfield */
+.fejlbox {
+    padding: 10px;
+    border-color: red;
+
+}
+
+.boxs {
+    width: 200px;
+    height: 18px;
 }

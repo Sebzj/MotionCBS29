@@ -4,6 +4,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.view.client.ListDataProvider;
 import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
 import motioncbs.client.ui.admin.AdminMainView.AdminMainView;
@@ -17,7 +18,10 @@ class AdminController {
     private ContentPanel content;
     private AdminMainView adminMainView;
     private MotionCBSServiceAsync motionCBSServiceAsync;
+    private ListDataProvider<User> listProviderUsers;
     //opretter constructor
+
+
 
     AdminController(ContentPanel content, MotionCBSServiceAsync motionCBSService) {
 
@@ -26,6 +30,11 @@ class AdminController {
         this.adminMainView = content.getAdminMainView();
 
         bindHandlers();
+
+
+
+
+
     }
 
     private void bindHandlers() {
@@ -75,7 +84,7 @@ class AdminController {
             @Override
             public void onSuccess(ArrayList<User> users) {
                 // Adding all the users to the DataProvider (ArrayList)
-               // motionCBSServiceAsync.getList().addAll(users);
+                listProviderUsers.getList().addAll(users);
             }
         });
 
