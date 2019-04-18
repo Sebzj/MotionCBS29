@@ -3,6 +3,7 @@ package motioncbs.shared;
 public class FieldVerifier {
 
 
+    //Fieldverifier til vores brugernavn, efternavn samt fornavn
     public static boolean isValidName(String name) {
         // check if name field is empty (not allowed)
         if (name.isEmpty()) {
@@ -37,10 +38,30 @@ public class FieldVerifier {
         }
 
         // check if number is between 0 and 99
-        if (ageNumber < 0 || ageNumber > 99)
+        if (ageNumber < 15 || ageNumber > 99)
             return false;
         else
             return true;
+    }
+
+    //Fieldverifier til vores password der som minimum skal indeholde 4 karakterer
+    public static boolean isValidPass(String pass) {
+        // check if name field is empty (not allowed)
+        if (pass.isEmpty()) {
+            return false;
+        }
+        // checker om passwordet indeholder minimumer 4 bogstaver/tal. Hvis det gør accepterer den!
+        return pass.length() > 3;
+    }
+
+    //Fieldverifier til vores password der som minimum skal indeholde 4 karakterer
+    public static boolean isValidBrugernavn(String pass) {
+        // check if name field is empty (not allowed)
+        if (pass.isEmpty()) {
+            return false;
+        }
+        // checker om passwordet indeholder minimum 3 bogstaver/tal. Hvis det gør accepterer den!
+        return pass.length() > 2;
     }
 
 

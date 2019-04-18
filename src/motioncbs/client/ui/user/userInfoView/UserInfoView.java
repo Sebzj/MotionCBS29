@@ -63,7 +63,7 @@ public class UserInfoView extends Composite {
 
 
     // metoden initTableColumns laver alle kolonnerne
-    private void initTableColumns(ColumnSortEvent.ListHandler<User> sortHandler) {
+    public void initTableColumns(ColumnSortEvent.ListHandler<User> sortHandler) {
 
 
 
