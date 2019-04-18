@@ -1,8 +1,40 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel>
 
-        <g:Label> Info change view her mine b's</g:Label>
+<g:HTMLPanel>
 
-    </g:HTMLPanel>
+    <g:Label>Venligst udfyld nedenstående og klik derefter ok for gemme ændringerne</g:Label>
+
+    <g:VerticalPanel>
+
+        <!-- Her findes fornavn og efternavn -->
+        <g:HorizontalPanel>
+            <g:Label>Fornavn:</g:Label>
+            <g:TextBox ui:field="fornavnBox"></g:TextBox>
+        </g:HorizontalPanel>
+        <g:HorizontalPanel>
+            <g:Label>Efternavn:</g:Label>
+            <g:TextBox ui:field="efternavnBox"></g:TextBox>
+        </g:HorizontalPanel>
+
+
+
+
+    </g:VerticalPanel>
+
+
+
+
+
+
+</g:HTMLPanel>
+
+
+
+
+
+
+
+
+
 </ui:UiBinder>

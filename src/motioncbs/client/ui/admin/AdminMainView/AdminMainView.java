@@ -22,7 +22,7 @@ public class AdminMainView extends Composite {
     private AdminUserChangeInfoView adminUserChangeInfoView;
 
     @UiField
-    Button logoutBtn, statsViewBtn, userInfoBtn, opretBtn;
+    Button logoutBtn, statsViewBtn, userInfoBtn, opretBtn, randomBtn;
     @UiField
     DeckLayoutPanel centerPanel;
 
@@ -57,6 +57,7 @@ public class AdminMainView extends Composite {
         statsViewBtn.addClickHandler(clickHandler);
         userInfoBtn.addClickHandler(clickHandler);
         logoutBtn.addClickHandler(clickHandler);
+        randomBtn.addClickHandler(clickHandler);
     }
 
 
@@ -77,7 +78,9 @@ public class AdminMainView extends Composite {
         return adminStatsView;
     }
 
-
+    public AdminUserChangeInfoView getAdminUserChangeInfoView() {
+        return adminUserChangeInfoView;
+    }
 
     //get methods til vores menu button  - til at bruge clickhandlers i vores AdminController
     public Button getOpretBtn() {
@@ -97,7 +100,7 @@ public class AdminMainView extends Composite {
 
     }
 
-
-
-
+    public Button getRandomBtn() {
+        return randomBtn;
+    }
 }

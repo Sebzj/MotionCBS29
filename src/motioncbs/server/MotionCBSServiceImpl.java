@@ -18,9 +18,9 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * The url, username and password for the database. The password is not necessarily
      * the same pass as your computer password
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/Data?useSSL=false";
-    private static final String USERNAME = "newuser";
-    private static final String PASSWORD = "zard8238473mwe";
+    private static final String URL = "jdbc:mysql://localhost:3306/data1?useSSL=false";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "Dba67scw";
     private static Connection connection = null;
 
 

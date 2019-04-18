@@ -4,5 +4,7 @@
 
         <g:Label> Info view her mine b's</g:Label>
 
+        <g:Button ui:field="redigerBtn">Rediger</g:Button>
+
     </g:HTMLPanel>
 </ui:UiBinder>
