@@ -18,9 +18,9 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * The url, username and password for the database. The password is not necessarily
      * the same pass as your computer password
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/data1?useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "Dba67scw";
+    private static final String URL = "jdbc:mysql://localhost:3306/data?useSSL=false";
+    private static final String USERNAME = "newuser";
+    private static final String PASSWORD = "zard8238473mwe";
     private static Connection connection = null;
 
 
@@ -125,32 +125,77 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * This method is changing a specific users info in the database
      */
     @Override
-    public boolean changeUserInfo(User user) throws IllegalArgumentException {
+    public void changeUserInfo(User user ) throws IllegalArgumentException {
         try {
             // Look at the previous method
-            PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET " + "age = ?," +"username = ?," + "password = ?, "
-                    + "gender = ?, " + "WHERE id = ?");
+            PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET firstname = ?, lastname = ?, age = ?, username = ?, password = ?, gender=?, customertype = ? where id = ?");
 
-            updateUser.setInt(1, user.getAge());
 
-            updateUser.setString(2,user.getUsername());
+            updateUser.setString(1, user.getFirstName());
 
-            updateUser.setString(3, user.getPassword());
+            updateUser.setString(2, user.getLastName());
 
-            updateUser.setString(4, user.getGender() + "");
+            updateUser.setInt(3, user.getAge());
 
-            updateUser.setInt(5, user.getCustomertype());
+            updateUser.setString(4,user.getUsername());
 
-            int rowsAffected = updateUser.executeUpdate();
+            updateUser.setString(5, user.getPassword());
 
-            if (rowsAffected == 1) {
-                return true;
-            }
+            updateUser.setString(6, user.getGender() + "");
+
+            updateUser.setInt(7, user.getCustomertype());
+
+            updateUser.setInt(8, user.getId());
+
+
+            updateUser.executeUpdate();
+
+
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
         }
-        return false;
+
     }
+
+    @Override
+    public User getCurrentUser(int userId) throws IllegalArgumentException {
+        ResultSet resultSet = null;
+         User currentUser = new User();
+
+        try {
+            // Same concept as getMessages method except there is no join in this statement
+            PreparedStatement getCurrentUser = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+            getCurrentUser.setInt(1, userId);
+            resultSet = getCurrentUser.executeQuery();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setFirstName(resultSet.getString("firstName"));
+                user.setLastName(resultSet.getString("lastName"));
+                user.setAge(resultSet.getInt("age"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+                user.setGender(resultSet.getString("gender"));
+                user.setCustomertype(resultSet.getInt("customertype"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                resultSet.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                close();
+            }
+        }
+        return currentUser;
+    }
+
+
+
+
 
     /**
      * This message is getting all the users from the database

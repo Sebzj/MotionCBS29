@@ -20,21 +20,14 @@ public class UserMainView extends Composite {
     DeckLayoutPanel centerPanel;
 
     @UiField
-    Button settingsBtn;
+    Button settingsBtn, infoBtn, usersBtn, logoutBtn;
 
-    @UiField
-    Button infoBtn;
-
-    @UiField
-    Button usersBtn;
-
-    @UiField
-    Button logoutBtn;
 
     private UserChangeInfoView userChangeInfoView;
     private UserInfoView userInfoView;
     private UserSettingsView userSettingsView;
     private UserMainView userMainView;
+
 
 
 
@@ -69,6 +62,8 @@ public class UserMainView extends Composite {
     public void changeView(Widget panel){
         centerPanel.showWidget(panel);
     }
+
+
     // getters for alle knapperne i UserMainVIew
     public Button getSettingsBtn() {
         return settingsBtn;
