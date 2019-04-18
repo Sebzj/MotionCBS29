@@ -80,7 +80,7 @@ public class UserController {
             currentUser.setFirstName(userMainView.getUserSettingsView().getFirstNameBox().getText());
             currentUser.setLastName(userMainView.getUserSettingsView().getLastNameBox().getText());
             int i = Integer.parseInt(userMainView.getUserSettingsView().getAgeBox().getText());
-            currentUser.setAge(i);
+            currentUser.setAge(i); //??? en anden get for int?
             currentUser.setUsername(userMainView.getUserSettingsView().getUsernameBox().getText());
             currentUser.setPassword(userMainView.getUserSettingsView().getPasswordBox().getText());
             if (userMainView.getUserSettingsView().getMaleCheckbox().getValue() == true) {

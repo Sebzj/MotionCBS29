@@ -54,12 +54,6 @@ class AdminController {
             } else if (event.getSource() == adminMainView.getStatsViewBtn()) {
                 adminMainView.changeView(adminMainView.getAdminStatsView());
 
-            } else if (event.getSource() == adminMainView.getAdminUserChangeInfoView()) {
-                adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
-
-            } else if (event.getSource() == adminMainView.getRandomBtn()) {
-                adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
-
             } else if (event.getSource() == adminMainView.getLogoutBtn()) {
                 content.changeView(content.getLoginView());
 

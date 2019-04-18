@@ -5,7 +5,11 @@
 
     <ui:style>
         .pager {
-
+            /*
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            */
         }
     </ui:style>
 
