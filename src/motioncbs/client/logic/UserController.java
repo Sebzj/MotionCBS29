@@ -109,13 +109,14 @@ public class UserController {
                 Window.alert("Det lykkedes at opdatere dine informationer");
                 }
 
-
             });
-            loadUser(currentUser);
-            userMainView.changeView(userMainView.getUserInfoView());
+            loadTables();
             listProviderUsers.getList().clear();
             listProviderUsers.refresh();
+            userMainView.changeView(userMainView.getUserInfoView());
             userMainView.getUserInfoView().initUsersTable(listProviderUsers);
+
+
 
         }
     }

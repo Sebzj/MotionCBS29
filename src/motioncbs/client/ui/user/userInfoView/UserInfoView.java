@@ -10,9 +10,11 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.ColumnSortEvent;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.SimplePager;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.view.client.ListDataProvider;
+import motioncbs.client.ui.user.userSettingsView.UserSettingsView;
 import motioncbs.shared.User;
 
 import java.util.Comparator;
@@ -29,6 +31,11 @@ public class UserInfoView extends Composite {
     @UiField
     SimplePager pager;
 
+    @UiField
+    Button changeInfoBtn;
+
+    private UserSettingsView userSettingsView;
+
 
     public UserInfoView() {
         initWidget(ourUiBinder.createAndBindUi(this));
@@ -42,6 +49,9 @@ public class UserInfoView extends Composite {
         // Ensures the headers doesn't get refreshed every time the data is
         // updated
         dataGrid.setAutoHeaderRefreshDisabled(true);
+
+        userSettingsView = new UserSettingsView();
+
     }
 
 
@@ -197,6 +207,30 @@ public class UserInfoView extends Composite {
 
 
 
+        //opretter password kolonnen
+        Column<User, String> passwordColumn = new Column<User, String>(new TextCell()) {
+            @Override
+            public String getValue(User user) {
+                return user.getPassword();
+            }
+        };
+
+        //goer saa password kolonnen kan sorteres
+        passwordColumn.setSortable(true);
+        sortHandler.setComparator(passwordColumn, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getPassword().compareTo(u2.getPassword());
+            }
+        });
+
+
+        //tilfoejer kolonnen til datagrid (tabellen) med titlen Password
+        dataGrid.addColumn(passwordColumn, "Password");
+
+        //saetter stoerelsen paa kolonnen
+        dataGrid.setColumnWidth(passwordColumn, 7, Style.Unit.PX);
+
 
 
         //opretter gender kolonnen
@@ -220,6 +254,34 @@ public class UserInfoView extends Composite {
         //saetter stoerelsen paa kolonnen
         dataGrid.setColumnWidth(genderColumn, 7, Style.Unit.PX);
 
+
+
+        //opretter customertype kolonnen
+        Column<User, Number> customertypeColumn = new Column<User, Number>(new NumberCell()) {
+            @Override
+            public Integer getValue(User user) {
+                return user.getCustomertype();
+            }
+        };
+
+        //goer saa customertype kolonnen kan sorteres
+        customertypeColumn.setSortable(true);
+        sortHandler.setComparator(customertypeColumn, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getCustomertype() - (u2.getCustomertype());
+            }
+        });
+
+
+        //tilfoejer kolonnen til datagrid (tabellen) med titlen Customertype
+        dataGrid.addColumn(customertypeColumn, "Customertype");
+
+        //saetter stoerelsen paa kolonnen
+        dataGrid.setColumnWidth(customertypeColumn, 7, Style.Unit.PX);
+
     }
+
+
 }
 

@@ -19,7 +19,7 @@
 
         }</ui:style>
     <g:HTMLPanel>
-
+            <g:Label text="Her kan du ændre dine personlige oplysninger. Du skal blot skrive dine nye informationer ind herunder:"></g:Label>
         <g:VerticalPanel spacing="15">
             <!--fornavn -->
              <g:HTMLPanel styleName="{style.changeInfoContainer}">
