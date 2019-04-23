@@ -17,11 +17,8 @@ public class AdminCreateUserView extends Composite {
 
     //Diverse UiFields
     @UiField
-    RadioButton rkvinde, rmand, mdA, mdB, mdC;
-    @UiField
-    RadioButton visPass;
-    @UiField
-    RadioButton skjulPass;
+    RadioButton rkvinde, rmand, mdA, mdB, mdC, visPass, skjulPass;
+
     @UiField
     TextBox fornavnBox, efternavnBox, brugernavnBox, alderTxt;
     @UiField

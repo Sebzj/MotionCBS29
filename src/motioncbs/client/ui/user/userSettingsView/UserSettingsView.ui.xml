@@ -17,7 +17,14 @@
 
         .Checkbox {
 
-        }</ui:style>
+        }
+
+        .obs {
+            font-style: italic;
+            font-size: 8px;
+
+        }
+    </ui:style>
     <g:HTMLPanel>
             <g:Label text="Her kan du ændre dine personlige oplysninger. Du skal blot skrive dine nye informationer ind herunder:"></g:Label>
         <g:VerticalPanel spacing="15">
@@ -66,9 +73,15 @@
                 <g:RadioButton styleName="textInput {style.input}"  name="B" text="B" ui:field="radioButtonB"/>
                 <g:RadioButton styleName="textInput {style.input}"  name="C" text="C" ui:field="radioButtonC"/>
             </g:FlowPanel>
+            <g:Label styleName="{style.obs}" >(OBS: Medlemstype A er medlemsskab med fitness uden hold- eller instruktørtimer, medlemskab B er med fitness og hold, medlemsskab C er med fitness samt hold- og instruktørtræning)</g:Label>
+
+            <g:HorizontalPanel width="100">
+                <!-- aendrer informationer knap-->
+                <g:Button styleName="btn" ui:field="changeProfileBtn" text="Change"/>
+
+            </g:HorizontalPanel>
 
 
-            <g:Button styleName="btn" ui:field="changeProfileBtn" text="Change"/>
         </g:VerticalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

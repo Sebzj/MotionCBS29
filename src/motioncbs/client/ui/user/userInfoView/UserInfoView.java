@@ -4,6 +4,7 @@ import com.google.gwt.cell.client.NumberCell;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.Column;
@@ -20,6 +21,8 @@ import motioncbs.shared.User;
 import java.util.Comparator;
 
 public class UserInfoView extends Composite {
+
+
     interface userInfoViewUiBinder extends UiBinder<HTMLPanel, UserInfoView> {
     }
 
@@ -33,8 +36,6 @@ public class UserInfoView extends Composite {
 
     @UiField
     Button changeInfoBtn;
-
-    private UserSettingsView userSettingsView;
 
 
     public UserInfoView() {
@@ -50,8 +51,11 @@ public class UserInfoView extends Composite {
         // updated
         dataGrid.setAutoHeaderRefreshDisabled(true);
 
-        userSettingsView = new UserSettingsView();
 
+    }
+
+    public void addClickHandler(ClickHandler clickHandler) {
+        changeInfoBtn.addClickHandler(clickHandler);
     }
 
 
@@ -60,11 +64,8 @@ public class UserInfoView extends Composite {
         ColumnSortEvent.ListHandler<User> sortHandler = new ColumnSortEvent.ListHandler<User>(dataProvider.getList());
         dataGrid.addColumnSortHandler(sortHandler);
 
-        // Creating all the necessary columns to the table
-
-
         /*
-         * Adding the data grid to the DataProvider The DataPrivider is
+         * Adding the data grid to the DataProvider The DataProvider is
          * containing a List with all the data
          */
         dataProvider.addDataDisplay(dataGrid);
@@ -74,7 +75,6 @@ public class UserInfoView extends Composite {
 
     // metoden initTableColumns laver alle kolonnerne
     public void initTableColumns(ColumnSortEvent.ListHandler<User> sortHandler) {
-
 
 
         // user id kolonnen bliver lavet
@@ -153,7 +153,6 @@ public class UserInfoView extends Composite {
         dataGrid.setColumnWidth(lastNameColumn, 7, Style.Unit.PX);
 
 
-
         //opretter alder kolonnen
         Column<User, Number> ageColumn = new Column<User, Number>(new NumberCell()) {
             @Override
@@ -177,8 +176,6 @@ public class UserInfoView extends Composite {
 
         //saetter stoerelsen paa kolonnen
         dataGrid.setColumnWidth(ageColumn, 7, Style.Unit.PX);
-
-
 
 
         //opretter username kolonnen
@@ -206,7 +203,6 @@ public class UserInfoView extends Composite {
         dataGrid.setColumnWidth(usernameColumn, 7, Style.Unit.PX);
 
 
-
         //opretter password kolonnen
         Column<User, String> passwordColumn = new Column<User, String>(new TextCell()) {
             @Override
@@ -232,7 +228,6 @@ public class UserInfoView extends Composite {
         dataGrid.setColumnWidth(passwordColumn, 7, Style.Unit.PX);
 
 
-
         //opretter gender kolonnen
         Column<User, String> genderColumn = new Column<User, String>(new TextCell()) {
             @Override
@@ -253,7 +248,6 @@ public class UserInfoView extends Composite {
         dataGrid.addColumn(genderColumn, "Gender");
         //saetter stoerelsen paa kolonnen
         dataGrid.setColumnWidth(genderColumn, 7, Style.Unit.PX);
-
 
 
         //opretter customertype kolonnen
@@ -282,6 +276,9 @@ public class UserInfoView extends Composite {
 
     }
 
-
+    public Button getChangeInfoBtn() {
+        return changeInfoBtn;
+    }
 }
+
 

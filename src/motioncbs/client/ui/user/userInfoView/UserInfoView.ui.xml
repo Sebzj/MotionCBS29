@@ -15,14 +15,17 @@
         .changeInfoBtn {
 
 
+
         }
     </ui:style>
 
     <g:HTMLPanel>
-        <g:FlowPanel>
-            <g:Button ui:field="changeInfoBtn" styleName="{style.changeInfoBtn}" text="Change information"/>
-        </g:FlowPanel>
+       <g:HorizontalPanel>
+           
+                <g:Label text="Dine informationer:" />
+                <g:Button ui:field="changeInfoBtn" styleName="{style.changeInfoBtn}" text="Change information"/>
 
+       </g:HorizontalPanel>
         <g:DockLayoutPanel unit="EM" width="100%" height="100%">
             <!-- DataGrid. -->
             <g:center>

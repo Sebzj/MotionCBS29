@@ -246,13 +246,18 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
         try {
             // Same concept as createMessage method
             PreparedStatement createUser = connection
-                    .prepareStatement("INSERT INTO users (username, password) VALUES (?,?)");
+                    .prepareStatement("INSERT INTO users (firstname, lastname, age, username, password, gender, customertype ) VALUES (?,?,?,?,?,?,?)");
 
-            createUser.setString(1, user.getUsername());
-            createUser.setString(2, user.getPassword());
+            createUser.setString(1, user.getFirstName());
+            createUser.setString(2, user.getLastName());
+            createUser.setInt(3, user.getAge());
+            createUser.setString(4, user.getUsername());
+            createUser.setString(5, user.getPassword());
+            createUser.setString(6, user.getGender());
+            createUser.setInt(7, user.getCustomertype());
 
             int rowsAffected = createUser.executeUpdate();
-            if (rowsAffected == 1) {
+            if (rowsAffected == 7) {
                 return true;
             }
 

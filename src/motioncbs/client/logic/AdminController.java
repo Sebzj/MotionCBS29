@@ -32,8 +32,9 @@ class AdminController {
         bindHandlers();
 
 
+    listProviderUsers = new ListDataProvider<>();
 
-
+adminMainView.getAdminAllUserInfoView().initUsersTable(listProviderUsers);
 
     }
 
@@ -58,6 +59,7 @@ class AdminController {
                 content.changeView(content.getLoginView());
 
                 currentUser=null;
+                listProviderUsers.getList().clear();
 
             }
         }

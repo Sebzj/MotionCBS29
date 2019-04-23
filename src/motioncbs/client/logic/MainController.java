@@ -81,7 +81,7 @@ public class MainController {
                         if (user.getCustomertype() == 4) {
                             adminController.loadUser(user);
                             content.changeView(content.getAdminMainView());
-                            content.getAdminMainView().changeView(content.getAdminMainView().getAdminStatsView());
+                            content.getAdminMainView().changeView(content.getAdminMainView().getAdminAllUserInfoView());
 
                         } else  {
                             userController.loadUser(user);

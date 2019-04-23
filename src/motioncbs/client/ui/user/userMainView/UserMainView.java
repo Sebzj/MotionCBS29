@@ -41,7 +41,7 @@ public class UserMainView extends Composite {
     public UserMainView() {
         initWidget(ourUiBinder.createAndBindUi(this));
 
-
+        //tilfoejer alle userviews til centerPanel
         userChangeInfoView = new UserChangeInfoView();
         centerPanel.add(userChangeInfoView);
 
