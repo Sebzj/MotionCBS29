@@ -1,7 +1,7 @@
 
 package motioncbs.client.ui.user.userMainView;
 
-import motioncbs.client.ui.user.userChangeInfoView.UserChangeInfoView;
+
 import motioncbs.client.ui.user.userInfoView.UserInfoView;
 import motioncbs.client.ui.user.userSettingsView.UserSettingsView;
 import com.google.gwt.core.client.GWT;
@@ -20,18 +20,10 @@ public class UserMainView extends Composite {
     DeckLayoutPanel centerPanel;
 
     @UiField
-    Button settingsBtn;
+    Button settingsBtn, infoBtn, logoutBtn;
 
-    @UiField
-    Button infoBtn;
 
-    @UiField
-    Button usersBtn;
 
-    @UiField
-    Button logoutBtn;
-
-    private UserChangeInfoView userChangeInfoView;
     private UserInfoView userInfoView;
     private UserSettingsView userSettingsView;
     private UserMainView userMainView;
@@ -42,8 +34,6 @@ public class UserMainView extends Composite {
         initWidget(ourUiBinder.createAndBindUi(this));
 
         //tilfoejer alle userviews til centerPanel
-        userChangeInfoView = new UserChangeInfoView();
-        centerPanel.add(userChangeInfoView);
 
         userInfoView = new UserInfoView();
         centerPanel.add(userInfoView);
@@ -60,7 +50,6 @@ public class UserMainView extends Composite {
 
     //metode der tilfoejer clickhandlers til alle knapperne i UserMainView
     public void addClickHandlers(ClickHandler clickHandler){
-        usersBtn.addClickHandler(clickHandler);
         settingsBtn.addClickHandler(clickHandler);
         infoBtn.addClickHandler(clickHandler);
         logoutBtn.addClickHandler(clickHandler);
@@ -69,6 +58,8 @@ public class UserMainView extends Composite {
     public void changeView(Widget panel){
         centerPanel.showWidget(panel);
     }
+
+
     // getters for alle knapperne i UserMainVIew
     public Button getSettingsBtn() {
         return settingsBtn;
@@ -78,18 +69,13 @@ public class UserMainView extends Composite {
         return infoBtn;
     }
 
-    public Button getUsersBtn() {
-        return usersBtn;
-    }
 
     public Button getLogoutBtn() {
         return logoutBtn;
     }
 
+
     //Getters for de forskellige views en bruger kan tilgaa.
-    public UserChangeInfoView getUserChangeInfoView() {
-        return userChangeInfoView;
-    }
 
     public UserInfoView getUserInfoView() {
         return userInfoView;

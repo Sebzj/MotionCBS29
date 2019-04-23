@@ -72,7 +72,6 @@
             <g:west size="10">
                 <g:FlowPanel styleName="{style.menu}">
                     <g:VerticalPanel>
-                    <g:Button styleName="{style.btn}" text="Forside" ui:field="usersBtn"/>
                     <g:Button styleName="{style.btn}" text="Dine informationer" ui:field="infoBtn"/>
                     <g:Button styleName="{style.btn}" text="Settings" ui:field="settingsBtn"/>
                     <g:Button styleName="{style.btn}" text="Logout" ui:field="logoutBtn"/>

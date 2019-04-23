@@ -7,12 +7,12 @@ import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import motioncbs.client.ui.user.userInfoView.UserInfoView;
+
 import motioncbs.client.ui.user.userMainView.UserMainView;
 import motioncbs.shared.FieldVerifier;
 import motioncbs.shared.User;
 
-import java.util.ArrayList;
+
 
 public class UserController {
 
@@ -71,8 +71,6 @@ public class UserController {
             } else if (event.getSource() == userMainView.getSettingsBtn()) {
                 userMainView.changeView(userMainView.getUserSettingsView());
 
-            } else if (event.getSource() == userMainView.getUsersBtn()) {
-                userMainView.changeView(userMainView.getUserMainView());
             } else if (event.getSource() == userMainView.getLogoutBtn()) {
                 contentPanel.changeView(contentPanel.getLoginView());
 
