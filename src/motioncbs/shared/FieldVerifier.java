@@ -64,6 +64,24 @@ public class FieldVerifier {
         return pass.length() > 2;
     }
 
+    public static boolean isGenderPicked(Boolean gender){
+      if (gender.equals(true))
+          return true;
+      else {
+          return false;
+      }
+    }
+
+    public static boolean isCustomertypePicked(Boolean customerType){
+        if (customerType.equals(true))
+            return true;
+        else {
+            return false;
+        }
+
+
+    }
+
 
 
 }

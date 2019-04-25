@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public interface MotionCBSServiceAsync {
 
 
-    void test(AsyncCallback<Void> async);
 
     void authorizeUser(String username, String password, AsyncCallback<User> async);
 
@@ -19,6 +18,7 @@ public interface MotionCBSServiceAsync {
 
     void deleteUser(int userId, AsyncCallback<Boolean> async);
 
-    void changeUserInfo(User user, AsyncCallback<Void> async);
 
+
+    void changeUserInfo(User user, AsyncCallback<Void> async);
 }

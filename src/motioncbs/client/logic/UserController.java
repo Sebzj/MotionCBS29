@@ -9,6 +9,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 
 import motioncbs.client.ui.user.userMainView.UserMainView;
+import motioncbs.client.ui.user.userSettingsView.UserSettingsView;
 import motioncbs.shared.FieldVerifier;
 import motioncbs.shared.User;
 
@@ -70,6 +71,8 @@ public class UserController {
 
             } else if (event.getSource() == userMainView.getSettingsBtn()) {
                 userMainView.changeView(userMainView.getUserSettingsView());
+                //toemmer textbokse og input i settingsView naar man gaar derind
+                userMainView.getUserSettingsView().clearInput();
 
             } else if (event.getSource() == userMainView.getLogoutBtn()) {
                 contentPanel.changeView(contentPanel.getLoginView());
@@ -90,7 +93,12 @@ public class UserController {
                     && FieldVerifier.isValidName(userMainView.getUserSettingsView().getLastNameBox().getText())
                     && FieldVerifier.isValidAge(userMainView.getUserSettingsView().getAgeBox().getText())
                     && FieldVerifier.isValidBrugernavn(userMainView.getUserSettingsView().getUsernameBox().getText())
-                    && FieldVerifier.isValidPass(userMainView.getUserSettingsView().getPasswordBox().getText())) {
+                    && FieldVerifier.isValidPass(userMainView.getUserSettingsView().getPasswordBox().getText())
+                    && FieldVerifier.isGenderPicked(userMainView.getUserSettingsView().getFemaleCheckbox().isChecked())
+                    || FieldVerifier.isGenderPicked(userMainView.getUserSettingsView().getMaleCheckbox().isChecked())
+                    && FieldVerifier.isCustomertypePicked(userMainView.getUserSettingsView().getRadioButtonA().isChecked())
+                    || FieldVerifier.isCustomertypePicked(userMainView.getUserSettingsView().getRadioButtonB().isChecked())
+                    || FieldVerifier.isCustomertypePicked(userMainView.getUserSettingsView().getRadioButtonC().isChecked())) {
 
 
                 currentUser.setFirstName(userMainView.getUserSettingsView().getFirstNameBox().getText());
@@ -99,6 +107,7 @@ public class UserController {
                 currentUser.setAge(i);
                 currentUser.setUsername(userMainView.getUserSettingsView().getUsernameBox().getText());
                 currentUser.setPassword(userMainView.getUserSettingsView().getPasswordBox().getText());
+
                 if (userMainView.getUserSettingsView().getMaleCheckbox().isChecked()) {
                     currentUser.setGender("Male");
                 } else if (userMainView.getUserSettingsView().getFemaleCheckbox().isChecked()) {
@@ -112,13 +121,44 @@ public class UserController {
                     currentUser.setCustomertype(3);
                 }
 
-                //Udskriver de indtastede data bortset fra brugernavn og password
-                Window.alert("Dine oplysninger er nu rettet til: " +
-                        "" + "\n" + "Fornavn: " +  currentUser.getFirstName()
-                        + "\n" + "efternavn: " +  currentUser.getLastName()
-                        + "\n" + "alder: " + currentUser.getAge()
-                        + "\n" + "Køn: " + currentUser.getGender()
-                        + "\n" + "Medlemstype: " + currentUser.getCustomertype());
+
+                motionCBSServiceAsync.changeUserInfo(currentUser, new AsyncCallback<Void>() {
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        Window.alert("Fejl i server kald - Kunne ikke opdatere informationer");
+                    }
+
+                    @Override
+                    public void onSuccess(Void updated) {
+
+                        Window.alert("Det lykkedes at opdatere dine informationer");
+
+                        //Udskriver de indtastede data bortset fra brugernavn og password
+                        Window.alert("Dine oplysninger er nu rettet til: " +
+                                "" + "\n" + "Fornavn: " +  currentUser.getFirstName()
+                                + "\n" + "efternavn: " +  currentUser.getLastName()
+                                + "\n" + "alder: " + currentUser.getAge()
+                                + "\n" + "Køn: " + currentUser.getGender()
+                                + "\n" + "Medlemstype: " + currentUser.getCustomertype());
+
+                        userMainView.getUserSettingsView().clearInput();
+
+                        loadTables();
+                        listProviderUsers.getList().clear();
+                        listProviderUsers.refresh();
+                        userMainView.changeView(userMainView.getUserInfoView());
+                        userMainView.getUserInfoView().initUsersTable(listProviderUsers);
+
+
+                        userMainView.getUserSettingsView().clearInput();
+
+                        // Window.alert("Could not update your information");
+                        //userMainView.changeView(userMainView.getUserSettingsView());
+
+                    }
+
+
+                });
 
 
             }
@@ -127,67 +167,33 @@ public class UserController {
                 if (!FieldVerifier.isValidName(userMainView.getUserSettingsView().getFirstNameBox().getText()))
                     Window.alert("Venligst indtast et fornavn på min. 2 bogstaver! " + "\n");
 
-                else if (!FieldVerifier.isValidName(userMainView.getUserSettingsView().getLastNameBox().getText()))
+                if (!FieldVerifier.isValidName(userMainView.getUserSettingsView().getLastNameBox().getText()))
                     Window.alert("Venligst indtast et efternavn på min. 2 bogstaver! " + "\n");
 
-                else if (!FieldVerifier.isValidAge(userMainView.getUserSettingsView().getAgeBox().getText()))
+                if (!FieldVerifier.isValidAge(userMainView.getUserSettingsView().getAgeBox().getText()))
                     Window.alert("For at være medlem skal du mindst være 15 år, og højst 99");
 
-                else if (!FieldVerifier.isValidBrugernavn(userMainView.getUserSettingsView().getUsernameBox().getText()))
+                if (!FieldVerifier.isValidBrugernavn(userMainView.getUserSettingsView().getUsernameBox().getText()))
                     Window.alert("Indast et brugernavn på minimum 3 karakter! (tal og/eller bogstaver)");
 
-                else if (!FieldVerifier.isValidPass(userMainView.getUserSettingsView().getPasswordBox().getText()))
+                if (!FieldVerifier.isValidPass(userMainView.getUserSettingsView().getPasswordBox().getText()))
                     Window.alert("Dit password skal være på minimum 4 karakterer! (tal og/eller bogstaver)");
 
-                else if (userMainView.getUserSettingsView().getMaleCheckbox().isChecked()
-                        && userMainView.getUserSettingsView().getFemaleCheckbox().isChecked())
+                if (userMainView.getUserSettingsView().getMaleCheckbox().isChecked()
+                        && userMainView.getUserSettingsView().getFemaleCheckbox().isChecked()
+                    || !FieldVerifier.isGenderPicked(userMainView.getUserSettingsView().getMaleCheckbox().isChecked())
+                    && !FieldVerifier.isGenderPicked(userMainView.getUserSettingsView().getFemaleCheckbox().isChecked()))
                     Window.alert("Du skal vælge ét køn");
 
-                else if (userMainView.getUserSettingsView().getRadioButtonA().getValue() == null
+                if (userMainView.getUserSettingsView().getRadioButtonA().getValue() == null
                         && userMainView.getUserSettingsView().getRadioButtonB().getValue() == null
                         && userMainView.getUserSettingsView().getRadioButtonC().getValue() == null)
                     Window.alert("Du skal vælge et medlemskab A, B eller C");
+
+                //Window.alert("Dine oplysninger blev ikke opdateret");
+                userMainView.changeView(userMainView.getUserSettingsView());
+
             }
-
-            motionCBSServiceAsync.changeUserInfo(currentUser, new AsyncCallback<Void>() {
-                @Override
-                public void onFailure(Throwable caught) {
-                    Window.alert("Fejl i server kald - Kunne ikke opdatere informationer");
-                }
-
-                @Override
-                public void onSuccess(Void result) {
-
-
-                Window.alert("Det lykkedes at opdatere dine informationer");
-
-                    userMainView.getUserSettingsView().getFirstNameBox().setText("");
-                    userMainView.getUserSettingsView().getLastNameBox().setText("");
-                    userMainView.getUserSettingsView().getAgeBox().setText("");
-                    userMainView.getUserSettingsView().getUsernameBox().setText("");
-                    userMainView.getUserSettingsView().getPasswordBox().setText("");
-                    userMainView.getUserSettingsView().getFemaleCheckbox().setChecked(false);
-                    userMainView.getUserSettingsView().getMaleCheckbox().setChecked(false);
-                    userMainView.getUserSettingsView().getRadioButtonA().setChecked(false);
-                    userMainView.getUserSettingsView().getRadioButtonB().setChecked(false);
-                    userMainView.getUserSettingsView().getRadioButtonC().setChecked(false);
-                }
-
-
-            });
-
-            loadTables();
-            listProviderUsers.getList().clear();
-            listProviderUsers.refresh();
-            userMainView.changeView(userMainView.getUserInfoView());
-            userMainView.getUserInfoView().initUsersTable(listProviderUsers);
-
-
-
-
-
-
-
         }
     }
 

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 @RemoteServiceRelativePath("motionCBSService")
 public interface MotionCBSService extends RemoteService {
 
-    void test() throws IllegalArgumentException;
 
     User authorizeUser(String username, String password) throws IllegalArgumentException;
 

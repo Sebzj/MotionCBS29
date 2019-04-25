@@ -48,14 +48,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
             e.printStackTrace();
         }
     }
-    /**
-     * Just a simple method which is used to test client server connection
-     */
 
-    @Override
-    public void test() throws IllegalArgumentException {
-        System.out.println("Server/Client connection is fine");
-    }
 
 
     /**
@@ -125,7 +118,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
      * This method is changing a specific users info in the database
      */
     @Override
-    public void changeUserInfo(User user ) throws IllegalArgumentException {
+    public void changeUserInfo(User user) throws IllegalArgumentException {
         try {
             // Look at the previous method
             PreparedStatement updateUser = connection.prepareStatement("UPDATE Users SET firstname = ?, lastname = ?, age = ?, username = ?, password = ?, gender=?, customertype = ? where id = ?");
@@ -146,7 +139,6 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
             updateUser.setInt(7, user.getCustomertype());
 
             updateUser.setInt(8, user.getId());
-
 
             updateUser.executeUpdate();
 
@@ -257,7 +249,7 @@ public class MotionCBSServiceImpl extends RemoteServiceServlet implements Motion
             createUser.setInt(7, user.getCustomertype());
 
             int rowsAffected = createUser.executeUpdate();
-            if (rowsAffected == 7) {
+            if (rowsAffected == 1) {
                 return true;
             }
 

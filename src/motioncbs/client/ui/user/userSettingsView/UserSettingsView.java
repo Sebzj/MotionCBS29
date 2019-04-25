@@ -29,10 +29,24 @@ public class UserSettingsView extends Composite {
 
 
     }
+
  // tilføjer clickhandler til changeProfile button
     public void addClickHandlers(ClickHandler clickHandler){
         changeProfileBtn.addClickHandler(clickHandler);
 
+    }
+
+    public void clearInput(){
+        getFirstNameBox().setText("");
+        getLastNameBox().setText("");
+        getAgeBox().setText("");
+        getUsernameBox().setText("");
+        getPasswordBox().setText("");
+        getFemaleCheckbox().setChecked(false);
+        getMaleCheckbox().setChecked(false);
+        getRadioButtonA().setChecked(false);
+        getRadioButtonB().setChecked(false);
+        getRadioButtonC().setChecked(false);
     }
 
     public TextBox getFirstNameBox() {
