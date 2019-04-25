@@ -43,16 +43,16 @@ public class UserController {
 
 
     }
-
+    // metode der binder clickhandlers til buttons
     private void bindHandlers() {
         userMainView.addClickHandlers(new MenuClickHandler());
 
-        userMainView.getUserSettingsView().getChangeProfileBtn().addClickHandler(new ChangeInfoClickHandler());
+        userMainView.getUserSettingsView().addClickHandlers(new ChangeInfoClickHandler());
 
-        userMainView.getUserInfoView().getChangeInfoBtn().addClickHandler(new ChangeInformationClickhandler());
+        userMainView.getUserInfoView().addClickHandler(new ChangeInformationBtnClickhandler());
     }
 
-    class ChangeInformationClickhandler implements ClickHandler {
+    class ChangeInformationBtnClickhandler implements ClickHandler {
         @Override
         public void onClick(ClickEvent event) {
             userMainView.getUserInfoView().getChangeInfoBtn();

@@ -56,7 +56,7 @@
                 <!-- Alder txt felt her -->
                 <g:HorizontalPanel>
                     <g:Label styleName="{style.lbl}">Alder:</g:Label>
-                    <g:TextBox styleName="boxs" ui:field="alderTxt"></g:TextBox>
+                    <g:TextBox styleName="boxs" ui:field="alderBox"></g:TextBox>
                 </g:HorizontalPanel>
 
                 <!-- Køn RadioButton her -->
@@ -93,7 +93,7 @@
 
                 <g:HorizontalPanel>
                 <!-- Opret bruger knap -->
-                <g:Button ui:field="knap" styleName="{style.button}">Opret bruger</g:Button>
+                <g:Button ui:field="opretKnap" styleName="{style.button}">Opret bruger</g:Button>
                 <g:Button ui:field="rydBtn" styleName="{style.button}" text="Ryd alt"/>
                 </g:HorizontalPanel>
 

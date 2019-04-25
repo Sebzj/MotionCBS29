@@ -32,9 +32,9 @@ public class UserSettingsView extends Composite {
 
  // tilføjer clickhandler til changeProfile button
     public void addClickHandlers(ClickHandler clickHandler){
-        changeProfileBtn.addClickHandler(clickHandler);
+    changeProfileBtn.addClickHandler(clickHandler);
 
-    }
+   }
 
     public void clearInput(){
         getFirstNameBox().setText("");
