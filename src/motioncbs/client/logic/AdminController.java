@@ -201,10 +201,10 @@ class AdminController {
                     && FieldVerifier.isValidPass(adminMainView.getAdminCreateUserView().getPasswordBox().getText())
                     && FieldVerifier.isGenderPicked(adminMainView.getAdminCreateUserView().getRkvinde().isChecked())
                     || FieldVerifier.isGenderPicked(adminMainView.getAdminCreateUserView().getRmand().isChecked())
-                    && FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdA().isChecked())
-                    || FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdB().isChecked())
-                    || FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdC().isChecked())) {
-
+                    && FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdA().getValue())
+                    || FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdB().getValue())
+                    || FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdC().getValue()))
+            {
 
                 String firstName = adminMainView.getAdminCreateUserView().getFornavnBox().getText();
                 String lastName = adminMainView.getAdminCreateUserView().getEfternavnBox().getText();
@@ -251,7 +251,7 @@ class AdminController {
                             /* If the user is created the text fields are cleared
                              * and the user is added to the list of users
                              */
-                            adminMainView.getAdminCreateUserView().getRydBtn();
+                            adminMainView.getAdminCreateUserView().clearInput();
                             listProviderUsers.getList().add(user);
 
                             //Udskriver de indtastede data bortset fra brugernavn og password
@@ -272,13 +272,10 @@ class AdminController {
                         adminMainView.changeView(adminMainView.getAdminAllUserInfoView());
                         adminMainView.getAdminAllUserInfoView().initUsersTable(listProviderUsers);
 
-
-                        // Window.alert("Could not update your information");
-                        //userMainView.changeView(userMainView.getUserSettingsView());
-
                     }
 
                 });
+
             } else {
                 // Brugeren får besked hvis han/hun ikke har udfyldt felterne korrekt.
                 if (!FieldVerifier.isValidName(adminMainView.getAdminCreateUserView().getFornavnBox().getText()))
@@ -290,9 +287,7 @@ class AdminController {
                 if (!FieldVerifier.isValidAge(adminMainView.getAdminCreateUserView().getAlderBox().getText()))
                     Window.alert("For at være medlem skal du mindst være 15 år, og højst 99");
 
-                if (adminMainView.getAdminCreateUserView().getRmand().isChecked()
-                        && adminMainView.getAdminCreateUserView().getRkvinde().isChecked()
-                        || !FieldVerifier.isGenderPicked(adminMainView.getAdminCreateUserView().getRkvinde().isChecked())
+                if (!FieldVerifier.isGenderPicked(adminMainView.getAdminCreateUserView().getRkvinde().isChecked())
                         && !FieldVerifier.isGenderPicked(adminMainView.getAdminCreateUserView().getRmand().isChecked()))
                     Window.alert("Du skal vælge ét køn");
 
@@ -303,13 +298,12 @@ class AdminController {
                     Window.alert("Dit password skal være på minimum 4 karakterer! (tal og/eller bogstaver)");
 
 
-
-                if (adminMainView.getAdminCreateUserView().getMdA().getValue() == null
-                        && adminMainView.getAdminCreateUserView().getMdB().getValue() == null
-                        && adminMainView.getAdminCreateUserView().getMdC().getValue() == null)
+                if (!FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdA().isChecked())
+                        && !FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdB().isChecked())
+                        && !FieldVerifier.isCustomertypePicked(adminMainView.getAdminCreateUserView().getMdC().isChecked()))
                     Window.alert("Du skal vælge et medlemskab A, B eller C");
 
-                //Window.alert("Dine oplysninger blev ikke opdateret");
+                Window.alert("Dine oplysninger blev ikke opdateret");
                 adminMainView.changeView(adminMainView.getAdminCreateUserView());
             }
 
