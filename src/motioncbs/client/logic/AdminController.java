@@ -1,5 +1,6 @@
 package motioncbs.client.logic;
 
+import com.google.gwt.cell.client.ActionCell;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
@@ -8,12 +9,14 @@ import com.google.gwt.view.client.ListDataProvider;
 import motioncbs.client.rpc.MotionCBSServiceAsync;
 import motioncbs.client.ui.ContentPanel;
 import motioncbs.client.ui.admin.AdminMainView.AdminMainView;
+import motioncbs.client.ui.admin.AdminUserChangeInfoView.AdminUserChangeInfoView;
 import motioncbs.shared.FieldVerifier;
 import motioncbs.shared.User;
 
 import java.util.ArrayList;
 
 class AdminController {
+
 
     private User currentUser;
     private ContentPanel content;
@@ -51,6 +54,8 @@ class AdminController {
         adminMainView.getAdminCreateUserView().getRkvinde().addClickHandler(new rKvindeBtn());
         adminMainView.getAdminCreateUserView().getRmand().addClickHandler(new rMandBtn());
         adminMainView.getAdminCreateUserView().getRydBtn().addClickHandler(new rydBtn());
+        adminMainView.getAdminAllUserInfoView().addClickHandler(new deleteMemberBtn());
+        adminMainView.getAdminAllUserInfoView().addClickHandler(new updateUserInfoBtn());
     }
 
     //metode der fortaeller hvad der sker naar der bliver trykket paa de forskellige buttons i adminMainView.
@@ -185,11 +190,76 @@ class AdminController {
         }
     }
 
+    class deleteMemberBtn implements ActionCell.Delegate<User>{
 
+        @Override
+        public void execute(final User user) {
+
+            //Spoerger om man er sikker paa at brugeren skal slettes
+            boolean deleteUserConfirmed = Window.confirm("Are you sure you want to delete:\n" + user.getUsername()
+                    + " \nWith id: " + user.getId());
+           // Window.alert(user.getId() + "");
+            //hvis man er sikker bliver der lavet et RPC kald til databasen der anmoder om sletning af en bruger med et bestemt id
+            if (deleteUserConfirmed) {
+                motionCBSServiceAsync.deleteUser(user.getId(), new AsyncCallback<Boolean>() {
+
+                    //onFailure beskriver hvad der skal ske hvis RPC kaldet ikke virker som det skal
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        Window.alert("Something went wrong");
+                    }
+
+                    /*
+                     * onSuccess definerer hvordan serveren skal svare tilbage hvis kaldet lykkes
+                     */
+                    @Override
+                    public void onSuccess(Boolean isDeleted) {
+                        if (!isDeleted) {
+                            Window.alert("Could not delete user");
+                        } else {
+                            // Hvis brugeren bliver slettet, fjerner vi den fra user-listen
+                            listProviderUsers.getList().remove(user);
+                        }
+
+                    }
+                });
+            }
+
+        }
+    }
+
+    class updateUserInfoBtn implements ActionCell.Delegate<User>{
+
+        @Override
+        public void execute(final User user) {
+            user.getFirstName();
+            user.getFirstName();
+            user.getLastName();
+            user.getAge();
+            user.getUsername();
+            user.getPassword();
+            user.getGender();
+            user.getCustomertype();
+            adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
+        }
+    }
+
+    class updateHandler implements ClickHandler{
+
+        @Override
+        public void onClick(ClickEvent event) {
+
+        }
+    }
+
+
+
+
+
+
+
+//metode der fortaeller hvad der skal ske naar man trykker paa opret bruger
     class opretMedlem implements ClickHandler {
-
-        ///MANGLER at fixe radiobuttons her ved window alerts /////////////////////////////////////
-
 
         //Fieldverifier der checker om vores inputs er som ønskede og hvis de er viser window alert vores indtastede input.
         @Override

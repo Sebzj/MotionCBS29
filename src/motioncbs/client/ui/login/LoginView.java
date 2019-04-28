@@ -16,7 +16,7 @@ public class LoginView extends Composite {
     private static LoginViewUiBinder uiBinder = GWT.create(LoginViewUiBinder.class);
 
     @UiField
-    Button loginBtn;
+    Button loginBtn, signUpBtn;
 
     @UiField
     TextBox usernameBox, passwordBox;
@@ -27,6 +27,7 @@ public class LoginView extends Composite {
 
     public void addClickHandlers(ClickHandler clickHandler) {
         loginBtn.addClickHandler(clickHandler);
+        signUpBtn.addClickHandler(clickHandler);
     }
 
     //metode der tømmer tekstboksene username og password så andre ikke kan se det når brugeren logger ud.
@@ -44,5 +45,13 @@ public class LoginView extends Composite {
 
     public TextBox getPasswordBox() {
         return passwordBox;
+    }
+
+    public Button getSignUpBtn() {
+        return signUpBtn;
+    }
+
+    public Button getLoginBtn() {
+        return loginBtn;
     }
 }

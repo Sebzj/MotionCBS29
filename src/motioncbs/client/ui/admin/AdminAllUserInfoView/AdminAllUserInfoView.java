@@ -1,5 +1,6 @@
 package motioncbs.client.ui.admin.AdminAllUserInfoView;
 
+import com.google.gwt.cell.client.ActionCell;
 import com.google.gwt.cell.client.NumberCell;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
@@ -26,7 +27,7 @@ public class AdminAllUserInfoView extends Composite {
     interface AdminAllUserInfoViewUiBinder extends UiBinder<HTMLPanel, AdminAllUserInfoView> {
     }
 
-
+    private ActionCell.Delegate<User> actionCell;
 
 
     private static AdminAllUserInfoViewUiBinder ourUiBinder = GWT.create(AdminAllUserInfoViewUiBinder.class);
@@ -56,6 +57,9 @@ public class AdminAllUserInfoView extends Composite {
 
     }
 
+    public void addClickHandler(ActionCell.Delegate<User> actionCell) {
+        this.actionCell = actionCell;
+    }
     public void initUsersTable(ListDataProvider<User> dataProvider) {
         // Attach a column sort handler to the ListDataProvider to sort the list
         ColumnSortEvent.ListHandler<User> sortHandler = new ColumnSortEvent.ListHandler<User>(dataProvider.getList());
@@ -95,7 +99,7 @@ public class AdminAllUserInfoView extends Composite {
         dataGrid.addColumn(idColumn, "Id");
 
         //saetter stoerelsen paa kolonnen
-        dataGrid.setColumnWidth(idColumn, 7, Style.Unit.PX);
+        dataGrid.setColumnWidth(idColumn, 4, Style.Unit.PX);
 
 
 
@@ -171,7 +175,7 @@ public class AdminAllUserInfoView extends Composite {
         dataGrid.addColumn(ageColumn, "Age");
 
         //saetter stoerelsen paa kolonnen
-        dataGrid.setColumnWidth(ageColumn, 7, Style.Unit.PX);
+        dataGrid.setColumnWidth(ageColumn, 4, Style.Unit.PX);
 
 
         //opretter username kolonnen
@@ -243,7 +247,7 @@ public class AdminAllUserInfoView extends Composite {
         //tilfoejer kolonnen til datagrid (tabellen) med titlen Gender
         dataGrid.addColumn(genderColumn, "Gender");
         //saetter stoerelsen paa kolonnen
-        dataGrid.setColumnWidth(genderColumn, 7, Style.Unit.PX);
+        dataGrid.setColumnWidth(genderColumn, 6, Style.Unit.PX);
 
 
         //opretter customertype kolonnen
@@ -268,15 +272,57 @@ public class AdminAllUserInfoView extends Composite {
         dataGrid.addColumn(customertypeColumn, "Customertype");
 
         //saetter stoerelsen paa kolonnen
-        dataGrid.setColumnWidth(customertypeColumn, 7, Style.Unit.PX);
+        dataGrid.setColumnWidth(customertypeColumn, 6, Style.Unit.PX);
 
+
+        /*
+         * Delete user button cell
+         * This column is a little tricky. ActionCell is used to create a button inside
+         * each row in the table. The "Delete user" text is the button text
+         * When click the button the user object will be return. The click handler or
+         * more correctly ActionCell.Delegate<User> handler is added in the AdminController
+         * which performs the action when the button is pressed upon.
+         */
+        ActionCell<User> deleteMember = new ActionCell<>("Delete user", actionCell);
+        Column<User, User> joinColumn = new Column<User, User>(deleteMember) {
+            @Override
+            public User getValue(User user) {
+                return user;
+            }
+        };
+
+        dataGrid.addColumn(joinColumn, "Delete");
+        dataGrid.setColumnWidth(joinColumn, 5, Style.Unit.PX);
+
+
+        /*
+         * Delete user button cell
+         * This column is a little tricky. ActionCell is used to create a button inside
+         * each row in the table. The "Delete user" text is the button text
+         * When click the button the user object will be return. The click handler or
+         * more correctly ActionCell.Delegate<User> handler is added in the AdminController
+         * which performs the action when the button is pressed upon.
+         */
+        ActionCell<User> updateInfoBtn = new ActionCell<>("Update", actionCell);
+        Column<User, User> addColumn = new Column<User, User>(updateInfoBtn) {
+            @Override
+            public User getValue(User user) {
+                return user;
+            }
+        };
+
+        dataGrid.addColumn(addColumn, "Update");
+        dataGrid.setColumnWidth(addColumn, 5, Style.Unit.PX);
     }
 
 
 
 
 
-    }
+}
+
+
+
 
 
 

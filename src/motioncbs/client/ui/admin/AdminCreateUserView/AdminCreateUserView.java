@@ -35,17 +35,7 @@ public class AdminCreateUserView extends Composite {
 
 
     }
-    public void addClickHandlers(ClickHandler clickHandler) {
 
-        visPass.addClickHandler(clickHandler);
-        skjulPass.addClickHandler(clickHandler);
-        opretKnap.addClickHandler(clickHandler);
-        rydBtn.addClickHandler(clickHandler);
-        rkvinde.addClickHandler(clickHandler);
-        rmand.addClickHandler(clickHandler);
-
-
-    }
 
     //ved klik på knappen der rydder alt text og radiobuttons valg m.m.
 

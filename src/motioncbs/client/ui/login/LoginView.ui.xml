@@ -47,7 +47,10 @@
             <g:TextBox ui:field="usernameBox" styleName="{style.usernameBox}"/>
             <g:Label>Password:</g:Label>
             <g:PasswordTextBox ui:field="passwordBox"/>
+            <g:HorizontalPanel>
             <g:Button text="Login" ui:field="loginBtn" styleName="{style.btn}"/>
+                <g:Button text="Sign up" ui:field="signUpBtn" styleName="{style.btn}"/>
+            </g:HorizontalPanel>
         </g:VerticalPanel>
 
 

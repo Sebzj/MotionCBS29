@@ -1,0 +1,99 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+   <ui:style>
+
+       .oprett {
+           height: 100%;
+           width:100%;
+           display: inline-block;
+           background-color: lightgray;
+           border-spacing: 15px;
+           spacing: 15px;
+       }
+
+       .lbl {
+           width: 170px;
+           color: black;
+           font-weight: bold;
+       }
+
+       .rb {
+
+       }
+
+       .obs {
+           font-style: italic;
+           font-size: 8px;
+
+       }
+
+       .button {
+           background-color: #BBBBBB;
+           width: 90px;
+           height: 40px;
+
+       }</ui:style>
+    <g:HTMLPanel>
+        <g:VerticalPanel styleName="{style.oprett}">
+
+            <g:Label>For at oprette et medlem - venligst udfyld nedenstående:</g:Label>
+
+            <!-- Tekst bokse her -->
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Fornavn:</g:Label>
+                <g:TextBox ui:field="fornavnBox" styleName="boxs"></g:TextBox>
+            </g:HorizontalPanel>
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Efternavn:</g:Label>
+                <g:TextBox ui:field="efternavnBox" styleName="boxs"></g:TextBox>
+            </g:HorizontalPanel>
+
+            <!-- Alder txt felt her -->
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Alder:</g:Label>
+                <g:TextBox styleName="boxs" ui:field="alderBox"></g:TextBox>
+            </g:HorizontalPanel>
+
+            <!-- Køn RadioButton her -->
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Køn:</g:Label>
+                <g:RadioButton name="mand" ui:field="maleCheckbox" text="Mand">Mand</g:RadioButton>
+                <g:RadioButton name="kvinde" ui:field="femaleCheckbox" text="Kvinde">Kvinde</g:RadioButton>
+            </g:HorizontalPanel>
+
+
+            <!-- Brugernavn- samt password bokse her -->
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Brugernavn:</g:Label>
+                <g:TextBox ui:field="brugernavnBox" styleName="boxs"></g:TextBox>
+            </g:HorizontalPanel>
+            <g:HorizontalPanel>
+                <g:Label styleName="{style.lbl}">Password:</g:Label>
+                <g:PasswordTextBox ui:field="passwordBox" styleName="boxs"/>
+                <g:RadioButton styleName="{style.rb}" name="Vis" ui:field="showPass" text="Vis"/>
+                <g:RadioButton styleName="{style.rb}" name="Skjul" ui:field="hidePass" text="Skjul"/>
+            </g:HorizontalPanel>
+
+
+            <!-- Valg af medlemstype her -->
+            <g:VerticalPanel>
+                <g:HorizontalPanel>
+                    <g:Label styleName="{style.lbl}">Medlemstype:</g:Label>
+                    <g:RadioButton name="mdA" ui:field="radioButtonA">A</g:RadioButton>
+                    <g:RadioButton name="mdB" ui:field="radioButtonB">B</g:RadioButton>
+                    <g:RadioButton name="mdC" ui:field="radioButtonC">C</g:RadioButton>
+                </g:HorizontalPanel>
+                <g:Label styleName="{style.obs}" >(OBS: Medlemstype A er medlemsskab med fitness uden hold- eller instruktørtimer, medlemskab B er med fitness og hold, medlemsskab C er med fitness samt hold- og instruktørtræning)</g:Label>
+            </g:VerticalPanel>
+
+            <g:HorizontalPanel>
+                <!-- Opret bruger knap -->
+                <g:Button ui:field="opretKnap" styleName="{style.button}">Opret bruger</g:Button>
+                <g:Button ui:field="rydBtn" styleName="{style.button}" text="Ryd alt"/>
+            </g:HorizontalPanel>
+
+
+        </g:VerticalPanel>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

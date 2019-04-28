@@ -5,8 +5,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.*;
+import motioncbs.client.ui.user.userInfoView.UserInfoView;
 
 public class UserSettingsView extends Composite {
+
+
     interface userSettingsVIewUiBinder extends UiBinder<HTMLPanel, UserSettingsView> {
     }
 
@@ -30,11 +33,7 @@ public class UserSettingsView extends Composite {
 
     }
 
- // tilføjer clickhandler til changeProfile button
-    public void addClickHandlers(ClickHandler clickHandler){
-    changeProfileBtn.addClickHandler(clickHandler);
 
-   }
 
     public void clearInput(){
         getFirstNameBox().setText("");

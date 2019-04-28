@@ -6,6 +6,7 @@ import motioncbs.client.ui.login.LoginView;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
+import motioncbs.client.ui.login.SignUpView;
 import motioncbs.client.ui.user.userMainView.UserMainView;
 
 public class ContentPanel extends Composite {
@@ -17,6 +18,7 @@ public class ContentPanel extends Composite {
     private LoginView loginView;
     private UserMainView userMainView;
     private AdminMainView adminMainView;
+    private SignUpView signUpView;
 
 
     /**
@@ -34,6 +36,9 @@ public class ContentPanel extends Composite {
 
         adminMainView = new AdminMainView();
         contentPanel.add(adminMainView);
+
+        signUpView = new SignUpView();
+        contentPanel.add(signUpView);
 
         //The panel that is shown when the application starts
         contentPanel.showWidget(loginView);
@@ -59,5 +64,9 @@ public class ContentPanel extends Composite {
 
     public AdminMainView getAdminMainView() {
         return adminMainView;
+    }
+
+    public SignUpView getSignUpView() {
+        return signUpView;
     }
 }

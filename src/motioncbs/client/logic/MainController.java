@@ -36,12 +36,24 @@ public class MainController {
 
     public void bindHandlers(){
         content.getLoginView().addClickHandlers(new LoginClickHandler());
+        content.getLoginView().addClickHandlers(new SignUpClickHandler());
+    }
+    class SignUpClickHandler implements ClickHandler {
+
+        @Override
+        public void onClick(ClickEvent event) {
+            if (event.getSource() == content.getLoginView().getSignUpBtn()){
+                content.changeView(content.getSignUpView());
+            }
+
+        }
     }
 
     class LoginClickHandler implements ClickHandler {
 
         @Override
         public void onClick(ClickEvent event) {
+            if (event.getSource() == content.getLoginView().getLoginBtn()){
             //henter indhold fra usernamebox og passwordbox og saetter det lig String username og password
             String username = content.getLoginView().getUsernameBox().getText();
             String password = content.getLoginView().getPasswordBox().getText();
@@ -95,6 +107,7 @@ public class MainController {
 
         }
     }
+}
 }
 
 
