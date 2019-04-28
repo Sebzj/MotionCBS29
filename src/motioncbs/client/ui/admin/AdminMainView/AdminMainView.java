@@ -22,7 +22,7 @@ public class AdminMainView extends Composite {
     private AdminUserChangeInfoView adminUserChangeInfoView;
 
     @UiField
-    Button logoutBtn, statsViewBtn, userInfoBtn, opretBtn, randomBtn;
+    Button logoutBtn, statsViewBtn, userInfoBtn, opretBtn, randomBtn, sletMlmBtn;
     @UiField
     DeckLayoutPanel centerPanel;
 
@@ -58,6 +58,7 @@ public class AdminMainView extends Composite {
         userInfoBtn.addClickHandler(clickHandler);
         logoutBtn.addClickHandler(clickHandler);
         randomBtn.addClickHandler(clickHandler);
+        sletMlmBtn.addClickHandler(clickHandler);
     }
 
 
