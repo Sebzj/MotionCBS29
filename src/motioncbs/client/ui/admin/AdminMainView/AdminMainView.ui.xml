@@ -88,7 +88,7 @@
                     <g:Button styleName="{style.button}" text="Opret medlem" ui:field="opretBtn"/>
                     <g:Button styleName="{style.button}" text="Medlemsinfo" ui:field="userInfoBtn"/>
                     <g:Button styleName="{style.button}" text="Se statistikker" ui:field="statsViewBtn"/>
-                    <g:Button styleName="{style.button}" text="RandomEdit" ui:field="randomBtn"/>
+                    <g:Button styleName="{style.button}" text="Medlemsændringer" ui:field="randomBtn"/>
                     <g:Button styleName="{style.button}" text="Logout" ui:field="logoutBtn"/>
                 </g:FlowPanel>
             </g:west>

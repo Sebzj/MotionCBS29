@@ -129,7 +129,7 @@ public class UserController {
                 motionCBSServiceAsync.createUser(user, new AsyncCallback<Boolean>() {
                     @Override
                     public void onFailure(Throwable caught) {
-                        Window.alert("Fejl i server kald - Kunne ikke opdatere informationer");
+                        Window.alert("Fejl i server kald - Kunne ikke oprette bruger");
                     }
 
                     @Override

@@ -19,6 +19,7 @@ class AdminController {
 
 
     private User currentUser;
+    private User user;
     private ContentPanel content;
     private AdminMainView adminMainView;
     private MotionCBSServiceAsync motionCBSServiceAsync;
@@ -54,9 +55,118 @@ class AdminController {
         adminMainView.getAdminCreateUserView().getRkvinde().addClickHandler(new rKvindeBtn());
         adminMainView.getAdminCreateUserView().getRmand().addClickHandler(new rMandBtn());
         adminMainView.getAdminCreateUserView().getRydBtn().addClickHandler(new rydBtn());
-        adminMainView.getAdminAllUserInfoView().addClickHandler(new deleteMemberBtn());
-        adminMainView.getAdminAllUserInfoView().addClickHandler(new updateUserInfoBtn());
+        adminMainView.getAdminAllUserInfoView().addDeleteHandler(new deleteMemberBtn());
+        adminMainView.getAdminAllUserInfoView().addUpdateHandler(new updateUserInfoBtn());
+        adminMainView.getAdminUserChangeInfoView().getChangeUserInfBtn().addClickHandler(new editUserHandler());
+
+        //adminMainView.getAdminUserChangeInfoView().addClickHandlers(new editUserHandler());
     }
+
+    private class editUserHandler implements ClickHandler{
+
+        @Override
+        public void onClick(ClickEvent event) {
+
+            //checker om inputs overholder krav og tilfoejer vaerdierne til brugeren
+        if(adminMainView.getAdminUserChangeInfoView().valdateInput()){
+            //toemmer input
+            adminMainView.getAdminUserChangeInfoView().clearInput();
+
+            User user = adminMainView.getAdminUserChangeInfoView().getUser();
+
+            motionCBSServiceAsync.changeUserInfo(user, new AsyncCallback<Void>() {
+
+                @Override
+                public void onFailure(Throwable caught) {
+                    Window.alert("Kunne ikke opdatere brugeren, fejl i kald til server");
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+                    Window.alert("Det lykkedes at opdatere brugerens informationer");
+
+                    //Udskriver de indtastede data bortset fra brugernavn og password
+                    Window.alert("Dine oplysninger er nu rettet til: " +
+                            "" + "\n" + "Fornavn: " + user.getFirstName()
+                            + "\n" + "efternavn: " + user.getLastName()
+                            + "\n" + "alder: " + user.getAge()
+                            + "\n" + "Køn: " + user.getGender()
+                            + "\n" + "Medlemstype: " + user.getCustomertype());
+
+                    //adminMainView.getAdminUserChangeInfoView().clearInput();
+
+                    loadTables();
+                    listProviderUsers.getList().clear();
+                    // refresh dataprovider to reflect changes in cellTable
+                    listProviderUsers.refresh();
+                    // show updated cellTable
+                    adminMainView.changeView(adminMainView.getAdminAllUserInfoView());
+
+                    adminMainView.getAdminAllUserInfoView().initUsersTable(listProviderUsers);
+
+
+                }
+            });
+        }
+
+
+
+
+           }
+    }
+
+    //metode der fortaeller hvad der skal ske naar man trykker paa actioncellen 'update'
+    class updateUserInfoBtn implements ActionCell.Delegate<User>{
+
+        @Override
+        public void execute(final User user) {
+            adminMainView.getAdminUserChangeInfoView().clearInput();
+            adminMainView.getAdminUserChangeInfoView().setUser(user);
+            adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
+
+        }
+    }
+
+    class deleteMemberBtn implements ActionCell.Delegate<User> {
+
+        @Override
+        public void execute(final User user) {
+
+            //Spoerger om man er sikker paa at brugeren skal slettes
+            boolean deleteUserConfirmed = Window.confirm("Are you sure you want to delete:\n" + user.getUsername()
+                    + " \nWith id: " + user.getId());
+            // Window.alert(user.getId() + "");
+            //hvis man er sikker bliver der lavet et RPC kald til databasen der anmoder om sletning af en bruger med et bestemt id
+            if (deleteUserConfirmed) {
+                motionCBSServiceAsync.deleteUser(user.getId(), new AsyncCallback<Boolean>() {
+
+                    //onFailure beskriver hvad der skal ske hvis RPC kaldet ikke virker som det skal
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        Window.alert("Something went wrong");
+                    }
+
+                    /*
+                     * onSuccess definerer hvordan serveren skal svare tilbage hvis kaldet lykkes
+                     */
+                    @Override
+                    public void onSuccess(Boolean isDeleted) {
+                        if (!isDeleted) {
+                            Window.alert("Could not delete user");
+                        } else {
+                            // Hvis brugeren bliver slettet, fjerner vi den fra user-listen
+                            listProviderUsers.getList().remove(user);
+                        }
+
+                    }
+                });
+            }
+
+        }
+    }
+
+
+
 
     //metode der fortaeller hvad der sker naar der bliver trykket paa de forskellige buttons i adminMainView.
     class MenuClickHandler implements ClickHandler {
@@ -66,13 +176,18 @@ class AdminController {
             if (event.getSource() == adminMainView.getUserInfoBtn()) {
                 adminMainView.changeView(adminMainView.getAdminAllUserInfoView());
 
+
             } else if (event.getSource() == adminMainView.getOpretBtn()) {
                 adminMainView.changeView(adminMainView.getAdminCreateUserView());
 
             } else if (event.getSource() == adminMainView.getStatsViewBtn()) {
                 adminMainView.changeView(adminMainView.getAdminStatsView());
 
-            } else if (event.getSource() == adminMainView.getLogoutBtn()) {
+            }
+            else if (event.getSource() == adminMainView.getRandomBtn()){
+                adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
+            }
+            else if (event.getSource() == adminMainView.getLogoutBtn()) {
                 content.changeView(content.getLoginView());
 
                 currentUser = null;
@@ -190,67 +305,9 @@ class AdminController {
         }
     }
 
-    class deleteMemberBtn implements ActionCell.Delegate<User>{
 
-        @Override
-        public void execute(final User user) {
 
-            //Spoerger om man er sikker paa at brugeren skal slettes
-            boolean deleteUserConfirmed = Window.confirm("Are you sure you want to delete:\n" + user.getUsername()
-                    + " \nWith id: " + user.getId());
-           // Window.alert(user.getId() + "");
-            //hvis man er sikker bliver der lavet et RPC kald til databasen der anmoder om sletning af en bruger med et bestemt id
-            if (deleteUserConfirmed) {
-                motionCBSServiceAsync.deleteUser(user.getId(), new AsyncCallback<Boolean>() {
 
-                    //onFailure beskriver hvad der skal ske hvis RPC kaldet ikke virker som det skal
-                    @Override
-                    public void onFailure(Throwable caught) {
-                        Window.alert("Something went wrong");
-                    }
-
-                    /*
-                     * onSuccess definerer hvordan serveren skal svare tilbage hvis kaldet lykkes
-                     */
-                    @Override
-                    public void onSuccess(Boolean isDeleted) {
-                        if (!isDeleted) {
-                            Window.alert("Could not delete user");
-                        } else {
-                            // Hvis brugeren bliver slettet, fjerner vi den fra user-listen
-                            listProviderUsers.getList().remove(user);
-                        }
-
-                    }
-                });
-            }
-
-        }
-    }
-
-    class updateUserInfoBtn implements ActionCell.Delegate<User>{
-
-        @Override
-        public void execute(final User user) {
-            user.getFirstName();
-            user.getFirstName();
-            user.getLastName();
-            user.getAge();
-            user.getUsername();
-            user.getPassword();
-            user.getGender();
-            user.getCustomertype();
-            adminMainView.changeView(adminMainView.getAdminUserChangeInfoView());
-        }
-    }
-
-    class updateHandler implements ClickHandler{
-
-        @Override
-        public void onClick(ClickEvent event) {
-
-        }
-    }
 
 
 

@@ -62,6 +62,8 @@ public class AdminMainView extends Composite {
     }
 
 
+
+
     public void changeView(Widget panel){
         centerPanel.showWidget(panel);
     }

@@ -27,7 +27,8 @@ public class AdminAllUserInfoView extends Composite {
     interface AdminAllUserInfoViewUiBinder extends UiBinder<HTMLPanel, AdminAllUserInfoView> {
     }
 
-    private ActionCell.Delegate<User> actionCell;
+    private ActionCell.Delegate<User> deleteActionCell;
+    private ActionCell.Delegate<User> updateActionCell;
 
 
     private static AdminAllUserInfoViewUiBinder ourUiBinder = GWT.create(AdminAllUserInfoViewUiBinder.class);
@@ -57,9 +58,6 @@ public class AdminAllUserInfoView extends Composite {
 
     }
 
-    public void addClickHandler(ActionCell.Delegate<User> actionCell) {
-        this.actionCell = actionCell;
-    }
     public void initUsersTable(ListDataProvider<User> dataProvider) {
         // Attach a column sort handler to the ListDataProvider to sort the list
         ColumnSortEvent.ListHandler<User> sortHandler = new ColumnSortEvent.ListHandler<User>(dataProvider.getList());
@@ -283,8 +281,8 @@ public class AdminAllUserInfoView extends Composite {
          * more correctly ActionCell.Delegate<User> handler is added in the AdminController
          * which performs the action when the button is pressed upon.
          */
-        ActionCell<User> deleteMember = new ActionCell<>("Delete user", actionCell);
-        Column<User, User> joinColumn = new Column<User, User>(deleteMember) {
+        ActionCell<User> deleteMemberBtn = new ActionCell<>("Delete user", deleteActionCell);
+        Column<User, User> joinColumn = new Column<User, User>(deleteMemberBtn) {
             @Override
             public User getValue(User user) {
                 return user;
@@ -303,7 +301,7 @@ public class AdminAllUserInfoView extends Composite {
          * more correctly ActionCell.Delegate<User> handler is added in the AdminController
          * which performs the action when the button is pressed upon.
          */
-        ActionCell<User> updateInfoBtn = new ActionCell<>("Update", actionCell);
+        ActionCell<User> updateInfoBtn = new ActionCell<>("Update", updateActionCell);
         Column<User, User> addColumn = new Column<User, User>(updateInfoBtn) {
             @Override
             public User getValue(User user) {
@@ -315,10 +313,18 @@ public class AdminAllUserInfoView extends Composite {
         dataGrid.setColumnWidth(addColumn, 5, Style.Unit.PX);
     }
 
+    public void addUpdateHandler(ActionCell.Delegate<User> updateActionCell){
+        this.updateActionCell = updateActionCell;
+    }
 
+    public void addDeleteHandler(ActionCell.Delegate<User> deleteActionCell ) {
+        this.deleteActionCell = deleteActionCell;
 
+    }
 
-
+    public DataGrid<User> getDataGrid() {
+        return dataGrid;
+    }
 }
 
 
