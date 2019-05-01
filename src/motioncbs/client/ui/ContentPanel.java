@@ -6,7 +6,7 @@ import motioncbs.client.ui.login.LoginView;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
-import motioncbs.client.ui.login.SignUpView;
+import motioncbs.client.ui.signup.SignUpView;
 import motioncbs.client.ui.user.userMainView.UserMainView;
 
 public class ContentPanel extends Composite {

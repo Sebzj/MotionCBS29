@@ -52,7 +52,6 @@ public class AdminUserChangeInfoView extends Composite {
        // saetter vaerdier i input til user objekt
         firstNameBox.setText(user.getFirstName());
         lastNameBox.setText(user.getLastName());
-        //ageBox.setVisibleLength(user.getAge());
 
 
         ageBox.setText(String.valueOf(user.getAge()));
