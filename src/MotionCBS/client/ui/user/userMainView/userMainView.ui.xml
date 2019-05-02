@@ -14,6 +14,10 @@
         }
 
         .south {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background-color: olive;
 
         }
 
@@ -34,7 +38,17 @@
 
         .footer {
 
-        }<!--css? til vores menu -->
+        }
+
+        .lbl {
+            font-size: 15px;
+            font-weight: bold;
+            color: black;
+            font-style: italic;
+            margin-right: 20px;
+
+        }
+        <!--css? til vores menu -->
         .menu {
             padding: 30px;
             background-color: beige;
@@ -57,14 +71,18 @@
             <!--Header-->
             <g:north size="5">
                 <g:HTMLPanel styleName="{style.north}">
-                    <g:Label styleName="{style.title}" text="MotionCBS"/>
+                    <g:Label styleName="{style.title}" text="motioncbs"/>
                 </g:HTMLPanel>
             </g:north>
 
             <!--Footer-->
             <g:south size="3">
                 <g:HTMLPanel styleName="{style.south}">
-                    <g:Label styleName="{style.footer}" text="Motion CBS - Din religion i fitness"/>
+
+                        <g:Label styleName="{style.lbl}" text="CVR: 12345678"/>
+                        <g:Label styleName="{style.lbl}" text="Kontakt: info@motioncbs.dk"/>
+                        <g:Label styleName="{style.lbl}" text="Åbningstider: Alle ugens dage: 05:00-23:00"/>
+
                 </g:HTMLPanel>
             </g:south>
 
@@ -72,7 +90,6 @@
             <g:west size="10">
                 <g:FlowPanel styleName="{style.menu}">
                     <g:VerticalPanel>
-                    <g:Button styleName="{style.btn}" text="Forside" ui:field="usersBtn"/>
                     <g:Button styleName="{style.btn}" text="Dine informationer" ui:field="infoBtn"/>
                     <g:Button styleName="{style.btn}" text="Settings" ui:field="settingsBtn"/>
                     <g:Button styleName="{style.btn}" text="Logout" ui:field="logoutBtn"/>
