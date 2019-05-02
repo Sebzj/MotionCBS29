@@ -1,13 +1,7 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
     <ui:style>
-        .usernameContainer {
 
-        }
-
-        .usernameLbl {
-
-        }
 
         .changeInfoContainer {
 
@@ -21,41 +15,73 @@
 
         }
 
-        .radioButtons {
+        .Checkbox {
 
         }
 
-        .textArea {
+        .obs {
+            font-style: italic;
+            font-size: 8px;
 
-        }</ui:style>
+        }
+    </ui:style>
     <g:HTMLPanel>
-
-        <g:HTMLPanel styleName="{style.usernameContainer}">
-            <g:Label ui:field="usernameLbl" styleName="{style.usernameLbl}"/>
-        </g:HTMLPanel>
-
+            <g:Label text="Her kan du ændre dine personlige oplysninger. Du skal blot skrive dine nye informationer ind herunder:"></g:Label>
         <g:VerticalPanel spacing="15">
+            <!--fornavn -->
+             <g:HTMLPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Firstname:" />
+                <g:TextBox styleName="textInput {style.input}" ui:field="firstNameBox"/>
+             </g:HTMLPanel>
 
 
+            <!--efternavn -->
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Lastname:"/>
+                <g:TextBox styleName="textInput {style.input}" ui:field="lastNameBox"/>
+            </g:FlowPanel>
+
+            <!--age -->
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Age:"/>
+                <g:TextBox styleName="textInput {style.input}" ui:field="ageBox"/>
+            </g:FlowPanel>
+
+            <!--Username -->
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Username:"/>
+                <g:TextBox styleName="textInput {style.input}" ui:field="usernameBox"/>
+            </g:FlowPanel>
+
+            <!--Password -->
             <g:FlowPanel styleName="{style.changeInfoContainer}">
                 <g:Label styleName="{style.title}" text="Password:"/>
                 <g:TextBox styleName="textInput {style.input}" ui:field="passwordBox"/>
             </g:FlowPanel>
 
-            <g:FlowPanel styleName="{style.changeInfoContainer}">
-                <g:Label styleName="{style.title}" text="E-mail:"/>
-                <g:TextBox styleName="textInput {style.input}" ui:field="emailBox"/>
-            </g:FlowPanel>
-
+            <!--gender-->
             <g:FlowPanel styleName="{style.changeInfoContainer}">
                 <g:Label styleName="{style.title}" text="Gender:"/>
-                <g:RadioButton styleName="{style.radioButtons}" name="genderSettings" text="Male" ui:field="genderMaleRBtn"/>
-                <g:RadioButton styleName="{style.radioButtons}" name="genderSettings" text="Female"
-                               ui:field="genderFemaleRBtn"/>
+                <g:CheckBox styleName="{style.Checkbox}" name="Male" text="Male" ui:field="maleCheckbox"/>
+                <g:CheckBox styleName="{style.Checkbox}" name="Female" text="Female" ui:field="femaleCheckbox"/>
             </g:FlowPanel>
 
+            <!--customertype-->
+            <g:FlowPanel styleName="{style.changeInfoContainer}">
+                <g:Label styleName="{style.title}" text="Customertype:"/>
+                <g:RadioButton styleName="textInput {style.input}"  name="A" text="A" ui:field="radioButtonA"/>
+                <g:RadioButton styleName="textInput {style.input}"  name="B" text="B" ui:field="radioButtonB"/>
+                <g:RadioButton styleName="textInput {style.input}"  name="C" text="C" ui:field="radioButtonC"/>
+            </g:FlowPanel>
+            <g:Label styleName="{style.obs}" >(OBS: Medlemstype A er medlemsskab med fitness uden hold- eller instruktørtimer, medlemskab B er med fitness og hold, medlemsskab C er med fitness samt hold- og instruktørtræning)</g:Label>
 
-            <g:Button styleName="btn" ui:field="changeProfileBtn" text="Change"/>
+            <g:HorizontalPanel width="100">
+                <!-- aendrer informationer knap-->
+                <g:Button styleName="btn" ui:field="changeProfileBtn" text="Change"/>
+
+            </g:HorizontalPanel>
+
+
         </g:VerticalPanel>
     </g:HTMLPanel>
 </ui:UiBinder>

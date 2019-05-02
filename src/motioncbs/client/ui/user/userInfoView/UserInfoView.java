@@ -4,20 +4,25 @@ import com.google.gwt.cell.client.NumberCell;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.ColumnSortEvent;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.SimplePager;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.view.client.ListDataProvider;
+import motioncbs.client.ui.user.userSettingsView.UserSettingsView;
 import motioncbs.shared.User;
 
 import java.util.Comparator;
 
 public class UserInfoView extends Composite {
+
+
     interface userInfoViewUiBinder extends UiBinder<HTMLPanel, UserInfoView> {
     }
 
@@ -28,6 +33,9 @@ public class UserInfoView extends Composite {
 
     @UiField
     SimplePager pager;
+
+    @UiField
+    Button changeInfoBtn;
 
 
     public UserInfoView() {
@@ -42,6 +50,12 @@ public class UserInfoView extends Composite {
         // Ensures the headers doesn't get refreshed every time the data is
         // updated
         dataGrid.setAutoHeaderRefreshDisabled(true);
+
+
+    }
+
+    public void addClickHandler(ClickHandler clickHandler) {
+        changeInfoBtn.addClickHandler(clickHandler);
     }
 
 
@@ -50,11 +64,8 @@ public class UserInfoView extends Composite {
         ColumnSortEvent.ListHandler<User> sortHandler = new ColumnSortEvent.ListHandler<User>(dataProvider.getList());
         dataGrid.addColumnSortHandler(sortHandler);
 
-        // Creating all the necessary columns to the table
-
-
         /*
-         * Adding the data grid to the DataProvider The DataPrivider is
+         * Adding the data grid to the DataProvider The DataProvider is
          * containing a List with all the data
          */
         dataProvider.addDataDisplay(dataGrid);
@@ -63,8 +74,7 @@ public class UserInfoView extends Composite {
 
 
     // metoden initTableColumns laver alle kolonnerne
-    private void initTableColumns(ColumnSortEvent.ListHandler<User> sortHandler) {
-
+    public void initTableColumns(ColumnSortEvent.ListHandler<User> sortHandler) {
 
 
         // user id kolonnen bliver lavet
@@ -143,7 +153,6 @@ public class UserInfoView extends Composite {
         dataGrid.setColumnWidth(lastNameColumn, 7, Style.Unit.PX);
 
 
-
         //opretter alder kolonnen
         Column<User, Number> ageColumn = new Column<User, Number>(new NumberCell()) {
             @Override
@@ -167,8 +176,6 @@ public class UserInfoView extends Composite {
 
         //saetter stoerelsen paa kolonnen
         dataGrid.setColumnWidth(ageColumn, 7, Style.Unit.PX);
-
-
 
 
         //opretter username kolonnen
@@ -196,7 +203,29 @@ public class UserInfoView extends Composite {
         dataGrid.setColumnWidth(usernameColumn, 7, Style.Unit.PX);
 
 
+        //opretter password kolonnen
+        Column<User, String> passwordColumn = new Column<User, String>(new TextCell()) {
+            @Override
+            public String getValue(User user) {
+                return user.getPassword();
+            }
+        };
 
+        //goer saa password kolonnen kan sorteres
+        passwordColumn.setSortable(true);
+        sortHandler.setComparator(passwordColumn, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getPassword().compareTo(u2.getPassword());
+            }
+        });
+
+
+        //tilfoejer kolonnen til datagrid (tabellen) med titlen Password
+        dataGrid.addColumn(passwordColumn, "Password");
+
+        //saetter stoerelsen paa kolonnen
+        dataGrid.setColumnWidth(passwordColumn, 7, Style.Unit.PX);
 
 
         //opretter gender kolonnen
@@ -220,6 +249,36 @@ public class UserInfoView extends Composite {
         //saetter stoerelsen paa kolonnen
         dataGrid.setColumnWidth(genderColumn, 7, Style.Unit.PX);
 
+
+        //opretter customertype kolonnen
+        Column<User, Number> customertypeColumn = new Column<User, Number>(new NumberCell()) {
+            @Override
+            public Integer getValue(User user) {
+                return user.getCustomertype();
+            }
+        };
+
+        //goer saa customertype kolonnen kan sorteres
+        customertypeColumn.setSortable(true);
+        sortHandler.setComparator(customertypeColumn, new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return u1.getCustomertype() - (u2.getCustomertype());
+            }
+        });
+
+
+        //tilfoejer kolonnen til datagrid (tabellen) med titlen Customertype
+        dataGrid.addColumn(customertypeColumn, "Customertype");
+
+        //saetter stoerelsen paa kolonnen
+        dataGrid.setColumnWidth(customertypeColumn, 7, Style.Unit.PX);
+
+    }
+
+    public Button getChangeInfoBtn() {
+        return changeInfoBtn;
     }
 }
+
 

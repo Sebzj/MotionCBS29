@@ -31,7 +31,7 @@ public class User implements IsSerializable {
         this.customertype = customertype;
     }
 
-    // getters og saetters for users attributter
+    // getters og setters for users' attributter
 
     public int getId() {
         return id;

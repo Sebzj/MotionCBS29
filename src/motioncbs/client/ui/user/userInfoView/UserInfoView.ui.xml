@@ -11,19 +11,31 @@
             justify-content: center;
             */
         }
+
+        .changeInfoBtn {
+
+
+
+        }
     </ui:style>
 
     <g:HTMLPanel>
+       <g:HorizontalPanel>
+           
+                <g:Label text="Dine informationer:" />
+                <g:Button ui:field="changeInfoBtn" styleName="{style.changeInfoBtn}" text="Change information"/>
 
+       </g:HorizontalPanel>
         <g:DockLayoutPanel unit="EM" width="100%" height="100%">
             <!-- DataGrid. -->
             <g:center>
-                <c:DataGrid ui:field='dataGrid' visible="true" />
+                <c:DataGrid ui:field='dataGrid' visible="true"/>
             </g:center>
 
             <!-- Pager. -->
-            <g:south size="2">
+            <g:south size="3">
                 <c:SimplePager styleName="{style.pager}" ui:field='pager' location="CENTER" />
+
             </g:south>
 
         </g:DockLayoutPanel>

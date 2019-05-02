@@ -5,30 +5,30 @@ public class FieldVerifier {
 
     //Fieldverifier til vores brugernavn, efternavn samt fornavn
     public static boolean isValidName(String name) {
-        // check if name field is empty (not allowed)
+        // checker for at navn felet er tomt - ikke tilladt
         if (name.isEmpty()) {
             return false;
         }
-        // check if name fields contains digits (not allowed)
+        // checker for at navn felet indeholdet tal - ikke tilladt
         for (int n=0 ; n < name.length() ;n++) {
             if (Character.isDigit(name.charAt(n)))
                 return false;
         }
 
-        // check if name contains at least two characters
-        // if it does we accept the name, otherwise not
+        // checker for at navnet er af mindst 2 bogstaver - hvis ikke accepteres det ikke
+
         return name.length() > 1;
     }
 
     public static boolean isValidAge(String age) {
         int ageNumber;
 
-        // check if age field is empty (not allowed)
+        // checker for at alder felet er tomt - ikke tilladt
         if (age.isEmpty()) {
             return false;
         }
 
-        // check if age field contains a number
+        // checker for at alder feltet ikke indeholder bogstaver - ikke tilladt
         try {
             // try to convert to a number
             ageNumber = Integer.parseInt(age);
@@ -37,7 +37,7 @@ public class FieldVerifier {
             return false;
         }
 
-        // check if number is between 0 and 99
+        // checker at det indtastede er mellem 14 og 99 - andet er ikke tilladt
         if (ageNumber < 15 || ageNumber > 99)
             return false;
         else
